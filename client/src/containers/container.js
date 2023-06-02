@@ -7,17 +7,16 @@ function Container() {
   //console.log(newInstance)
 
   // create a new object and store it in the newInstance var
-  const creatInstance = (electricValue, gasValue, oilValue, carValue, flightUnderValue, flightOverValue, flightValue, newspaperValue, tinValue) => {
+  const creatInstance = (electricValue, gasValue, oilValue, carValue, flightUnderValue, flightOverValue, newspaperValue, tinValue) => {
     const obj = {
-      electric: electricValue ,
-      gas: gasValue,
-      oil: oilValue,
-      car: carValue,
+      electricBill: electricValue,
+      gasBill: gasValue,
+      oilBill: oilValue,
+      carMileage: carValue,
       flightUnder: flightUnderValue,
       flightOver: flightOverValue,
-      flightOverall: flightValue,
-      newspaperRecycle: newspaperValue,
-      tinRecycle: tinValue
+      recyclePaper: newspaperValue,
+      recycleAluminium: tinValue
     }
     setNewInstance(obj)
   }

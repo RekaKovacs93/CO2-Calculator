@@ -42,7 +42,8 @@ const MetersForm = ({creatInstance}) => {
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
         event.preventDefault()
-        creatInstance(electric * 105, gas  * 105, oil * 113, mileage * 0.79, flightUnder * 1100, flightOver * 4400, flightOver * 1100 + flightUnder * 4400, newspaperRecycle * 184, tinRecycle * 166)
+        creatInstance(electric, gas, oil, mileage, flightUnder, flightOver, newspaperRecycle, tinRecycle)
+        // creatInstance(electric * 105, gas  * 105, oil * 113, mileage * 0.79, flightUnder * 1100, flightOver * 4400, flightOver * 1100 + flightUnder * 4400, newspaperRecycle * 184, tinRecycle * 166)
     }
 
     return (
