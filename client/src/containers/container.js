@@ -3,10 +3,10 @@ import MetersForm from "../components/MetersForm";
 
 function Container() {
   
-  const [carbonTrackeColection, setCarbonTrackerColection] = useState([])
+  const [carbonTrackerColection, setCarbonTrackerColection] = useState([])
   
   // const [newInstance, setNewInstance] = useState(null);
-  //console.log(newInstance)
+  console.log(carbonTrackerColection)
 
   // create a new object and store it in the newInstance var
   // const creatInstance = (electricValue, gasValue, oilValue, carValue, flightUnderValue, flightOverValue, newspaperValue, tinValue) => {
@@ -24,7 +24,7 @@ function Container() {
   // }
 
   const addTrackingData = (data) => {
-    setCarbonTrackerColection([...carbonTrackeColection, data])
+    setCarbonTrackerColection([...carbonTrackerColection, data])
   }
 
   return (

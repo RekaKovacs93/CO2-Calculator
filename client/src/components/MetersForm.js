@@ -11,8 +11,8 @@ const MetersForm = ({addTrackingData}) => {
         carMileage: "",
         flightUnder: "",
         flightOver: "",
-        recyclePaper: "",
-        recycleAluminium: ""
+        recyclePaper: false,
+        recycleAluminium: false
     }
 
     const [submitedData, setSubmitedData] = useState(initialObj)
@@ -62,8 +62,8 @@ const MetersForm = ({addTrackingData}) => {
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
         event.preventDefault()
-        postTracker(submitedData)
-        .then((data) => {addTrackingData(data)})
+        // postTracker(submitedData)
+        // .then((data) => {addTrackingData(data)})
 
         setSubmitedData(initialObj)
         // creatInstance(electric, gas, oil, mileage, flightUnder, flightOver, newspaperRecycle, tinRecycle)
@@ -74,25 +74,25 @@ const MetersForm = ({addTrackingData}) => {
         <form onSubmit = {handleSubmit}>
             <div>
                 <label htmlFor = "electric" >electric bill</label>
-                <input type = 'number' value = {electric} onChange = {handeOnChange } id = "electric" name = "electricBill" style={{width: sizeInput}}/>
+                <input onChange = {handeOnChange} type = 'number' value = {submitedData.electricBill}  id = "electric" name = "electricBill" style={{width: sizeInput}}/>
                 <label htmlFor = "gas" >gas bill</label>
-                <input type = "number" value = {gas} onChange = {handeOnChange} id = "gas" name="gasBill" style={{width: sizeInput}}/>
+                <input type = "number" value = {submitedData.gasBill} onChange = {handeOnChange} id = "gas" name="gasBill" style={{width: sizeInput}}/>
                 <label htmlFor = "oil">oil bill</label>
-                <input type = "number" value = {oil} onChange = {handeOnChange} id = "oil" name="oilBill" style={{width: sizeInput}}/>
+                <input type = "number" value = {submitedData.oilBill} onChange = {handeOnChange} id = "oil" name="oilBill" style={{width: sizeInput}}/>
             </div>
             <div>
                 <label htmlFor = "mileage">mileage of on your car</label>
-                <input type = "number" value = {mileage} onChange = {handeOnChange} id = "mileage" name="carMileage" style={{width: sizeInput}}/>
+                <input type = "number" value = {submitedData.carMileage} onChange = {handeOnChange} id = "mileage" name="carMileage" style={{width: sizeInput}}/>
                 <label htmlFor = "flightUnder" >flights under 4 hours</label>
-                <input type = "number" value = {flightUnder} onChange = {handeOnChange} id = "flightUnder" name="flightUnder" style={{width: sizeInput}}/>
+                <input type = "number" value = {submitedData.flightUnder} onChange = {handeOnChange} id = "flightUnder" name="flightUnder" style={{width: sizeInput}}/>
                 <label htmlFor = "flightOver" >flights over 4 hours</label>
-                <input type = "number" value = {flightOver} onChange = {handeOnChange} id = "flightOver" name="flightOver" style={{width: sizeInput}}/>
+                <input type = "number" value = {submitedData.flightOver} onChange = {handeOnChange} id = "flightOver" name="flightOver" style={{width: sizeInput}}/>
             </div>
             <div>
                 <label htmlFor = "newspaper">recycle newspaper</label>
-                <input type = "checkbox" id = "newspaper" onChange = {handeOnChange} value = {newspaperRecycle} checked = {newspaperRecycle} name="recyclePaper" />
+                <input type = "checkbox" id = "newspaper" onChange = {handeOnChange} value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} name="recyclePaper" />
                 <label htmlFor = "tin" >recycle aluminum and tin</label>
-                <input type = "checkbox" id = "tin" onChange = {handeOnChange} value = {tinRecycle} checked = {tinRecycle} name="recycleAluminium" />
+                <input type = "checkbox" id = "tin" onChange = {handeOnChange} value = {submitedData.recycleAluminium} checked = {submitedData.recycleAluminium} name="recycleAluminium" />
             </div>
             <input type = "submit" value = "Submit" />
         </form>
