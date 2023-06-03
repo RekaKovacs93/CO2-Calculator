@@ -5,11 +5,12 @@ db.trackings.insertMany([
     {
      "electric bill":200,
      "gas bill": 100,
-     "car millage": 1000,
-     "number of short flights":2,
-     "number of long flights": 1,
-     "recycle paper": 10,
-     "recycle aluminium": 5
+     "oil bill": 100,
+     "millage on your car": 1000,
+     "flights under 4 hours":2,
+     "flights over 4 hours": 1,
+     "recycle newspaper": false,
+     "recycle aluminium and tin": false
 
     }
     
