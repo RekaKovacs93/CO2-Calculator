@@ -1,3 +1,5 @@
+import React from "react";
+import DoughnutChart from "../components/chart_component";
 import { useState } from "react";
 import MetersForm from "../components/MetersForm";
 
@@ -16,6 +18,7 @@ function Container() {
     <>
       <h1>Hello guys</h1>
       <MetersForm addTrackingData = {addTrackingData}/>
+      <DoughnutChart/>
     </>
   );
 }
