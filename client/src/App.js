@@ -1,4 +1,3 @@
-import './App.css';
 import Container from "./containers/container"
 
 function App() {
