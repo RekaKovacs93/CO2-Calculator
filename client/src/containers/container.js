@@ -8,21 +8,6 @@ function Container() {
   // const [newInstance, setNewInstance] = useState(null);
   console.log(carbonTrackerColection)
 
-  // create a new object and store it in the newInstance var
-  // const creatInstance = (electricValue, gasValue, oilValue, carValue, flightUnderValue, flightOverValue, newspaperValue, tinValue) => {
-  //   const obj = {
-  //     electricBill: electricValue,
-  //     gasBill: gasValue,
-  //     oilBill: oilValue,
-  //     carMileage: carValue,
-  //     flightUnder: flightUnderValue,
-  //     flightOver: flightOverValue,
-  //     recyclePaper: newspaperValue,
-  //     recycleAluminium: tinValue
-  //   }
-  //   setNewInstance(obj)
-  // }
-
   const addTrackingData = (data) => {
     setCarbonTrackerColection([...carbonTrackerColection, data])
   }
