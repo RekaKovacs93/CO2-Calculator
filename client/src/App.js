@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import Container from "./containers/container"
 
 function App() {
