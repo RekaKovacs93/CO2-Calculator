@@ -57,7 +57,7 @@ const MetersForm = ({addTrackingData}) => {
             <div>
                 <label htmlFor = "mileage">Mileage of Your Car</label>
                 <input type = "number" value = {submitedData.carMileage} onChange = {handleOnChange} id = "mileage" name="carMileage" style={{width: sizeInput}}/>
-                <label htmlFor = "flightUnder" >Nuber of Flights(less than 4 hours)</label>
+                <label htmlFor = "flightUnder" >Number of Flights(less than 4 hours)</label>
                 <input type = "number" value = {submitedData.flightUnder} onChange = {handleOnChange} id = "flightUnder" name="flightUnder" style={{width: sizeInput}}/>
                 <label htmlFor = "flightOver" >Number of Flights(more than 4 hours)</label>
                 <input type = "number" value = {submitedData.flightOver} onChange = {handleOnChange} id = "flightOver" name="flightOver" style={{width: sizeInput}}/>
