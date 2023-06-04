@@ -7,4 +7,22 @@ export const postTracker = (payload) => {
         headers: { 'Content-Type': 'application/json' }
     })
     .then(res => res.json())
-};
+}
+    
+    
+export const updateTracker = (payload) => {
+        return fetch(baseURL + payload._id, {
+          method: 'PUT',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => res.json());
+      }
+    
+export const deleteTracker = (id) => {
+        return fetch(baseURL + id, {
+          method: 'DELETE'
+        });
+    };
