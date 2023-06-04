@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { postTracker } from "../service/TrackerSevice";
+import {InputNumber, Button, Switch, Form} from 'antd'
+import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
 
 
 const MetersForm = ({addTrackingData}) => {
-    const sizeInput =  '60px'
     const initialObj = {       
         electricBill: "",
         gasBill: "",
@@ -14,63 +15,110 @@ const MetersForm = ({addTrackingData}) => {
         recyclePaper: false,
         recycleAluminium: false
     }
-
+    const   [form] = Form.useForm()
     const [submitedData, setSubmitedData] = useState(initialObj)
 
     const handleOnChange = (evt) => {
         const newSubmitedData = Object.assign({}, submitedData);
-        newSubmitedData[evt.target.name] = evt.target.value;
+        newSubmitedData[evt.target.id] = evt.target.value;
         setSubmitedData(newSubmitedData)
     }
 
-    const handleOnChangeCheckbox = (evt) =>{
+    const handleSwitchPaper = (evt) =>{
         const newSubmitedData = Object.assign({}, submitedData);
-        if (evt.target.checked){
-            newSubmitedData[evt.target.name] = true;
+            newSubmitedData.recyclePaper = evt;
             setSubmitedData(newSubmitedData)
-        }else {
-            newSubmitedData[evt.target.name] = false;
-            setSubmitedData(newSubmitedData)
-        }
+
+    }
+    const handleSwitchAluminium = (evt) =>{
+        const newSubmitedData = Object.assign({}, submitedData);
+        newSubmitedData.recycleAluminium = evt;
+        setSubmitedData(newSubmitedData)
     }
 
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
-        event.preventDefault()
-        postTracker(submitedData)
-        .then((data) => {addTrackingData(data)})
+        // event.preventDefault()
 
+        const newCarbonData = {
+            electricBill: submitedData.electricBill * 105,
+            gasBill: submitedData.gasBill * 105,
+            oilBill: submitedData.carMileage * 113,
+            carMileage: submitedData.carMileage * 0.79,
+            flightUnder: submitedData.flightUnder * 1100,
+            flightOver: submitedData.flightOver * 4400,
+            recyclePaper: (submitedData.recyclePaper? 0 : 184),
+            recycleAluminium: (submitedData.recycleAluminium? 0 : 166)
+        }
+        // postTracker(submitedData)
+        // .then((data) => {addTrackingData(data)})
+        // setSubmitedData(initialObj)
+        postTracker(newCarbonData)
+        .then((data) => {addTrackingData(data)})
         setSubmitedData(initialObj)
+        form.resetFields()
        
     }
 
     return (
-        <form onSubmit = {handleSubmit}>
-            <div>
-                <label htmlFor = "electric" >Electric Bill</label>
-                <input onChange = {handleOnChange} type = 'number' value = {submitedData.electricBill}  id = "electric" name = "electricBill" style={{width: sizeInput}}/>
-                <label htmlFor = "gas" >Gas Bill</label>
-                <input type = "number" value = {submitedData.gasBill} onChange = {handleOnChange} id = "gas" name="gasBill" style={{width: sizeInput}}/>
-                <label htmlFor = "oil">Oil Bill</label>
-                <input type = "number" value = {submitedData.oilBill} onChange = {handleOnChange} id = "oil" name="oilBill" style={{width: sizeInput}}/>
-            </div>
-            <div>
-                <label htmlFor = "mileage">Mileage of Your Car</label>
-                <input type = "number" value = {submitedData.carMileage} onChange = {handleOnChange} id = "mileage" name="carMileage" style={{width: sizeInput}}/>
-                <label htmlFor = "flightUnder" >Number of Flights(less than 4 hours)</label>
-                <input type = "number" value = {submitedData.flightUnder} onChange = {handleOnChange} id = "flightUnder" name="flightUnder" style={{width: sizeInput}}/>
-                <label htmlFor = "flightOver" >Number of Flights(more than 4 hours)</label>
-                <input type = "number" value = {submitedData.flightOver} onChange = {handleOnChange} id = "flightOver" name="flightOver" style={{width: sizeInput}}/>
-            </div>
-            <div>
-                <label htmlFor = "newspaper">Recycle Newspaper</label>
-                <input type = "checkbox" id = "newspaper" onChange = {handleOnChangeCheckbox} value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} name="recyclePaper" />
-                <label htmlFor = "tin" >Recycle Aluminum and Tin</label>
-                <input type = "checkbox" id = "tin" onChange = {handleOnChangeCheckbox} value = {submitedData.recycleAluminium} checked = {submitedData.recycleAluminium} name="recycleAluminium" />
-            </div>
-            <input type = "submit" value = "Submit" />
-        </form>
+        <Form form = {form} onFinish = {handleSubmit}>
+                <Form.Item label="Electric Bill" name = "electricBill" onChange = {handleOnChange}>
+                    <InputNumber  value = {submitedData.electricBill}  />
+                </Form.Item>
+                <Form.Item label="Gas Bill" name="gasBill"  onChange = {handleOnChange}>
+                    <InputNumber value = {submitedData.gasBill}  />
+                </Form.Item>
+                <Form.Item label="Oil Bill" name="oilBill"  onChange = {handleOnChange}>
+                    <InputNumber value = {submitedData.oilBill} />
+                </Form.Item>
+                <Form.Item label="Mileage of Your Car" name="carMileage" onChange = {handleOnChange} >
+                    <InputNumber value = {submitedData.carMileage}  />
+                </Form.Item>
+                <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder"  onChange = {handleOnChange} >
+                    <InputNumber value = {submitedData.flightUnder}  />
+                </Form.Item>
+                <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver"  onChange = {handleOnChange}>
+                    <InputNumber value = {submitedData.flightOver}  />
+                </Form.Item>
+                <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
+                    <Switch onChange = {handleSwitchPaper}  value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
+                </Form.Item>
+                <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
+                    <Switch  onChange = {handleSwitchAluminium} value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
+                </Form.Item>
+                <Form.Item>
+                    <Button htmlType="submit">Submit</Button>
+                </Form.Item>
+ 
+        </Form>
     );
 };
 
 export default MetersForm
+
+
+
+
+{/* <div>
+<label htmlFor = "electric" >Electric Bill</label>
+<input onChange = {handleOnChange} type = 'number' value = {submitedData.electricBill}  id = "electric" name = "electricBill" style={{width: sizeInput}}/>
+<label htmlFor = "gas" >Gas Bill</label>
+<input type = "number" value = {submitedData.gasBill} onChange = {handleOnChange} id = "gas" name="gasBill" style={{width: sizeInput}}/>
+<label htmlFor = "oil">Oil Bill</label>
+<input type = "number" value = {submitedData.oilBill} onChange = {handleOnChange} id = "oil" name="oilBill" style={{width: sizeInput}}/>
+</div>
+<div>
+<label htmlFor = "mileage">Mileage of Your Car</label>
+<input type = "number" value = {submitedData.carMileage} onChange = {handleOnChange} id = "mileage" name="carMileage" style={{width: sizeInput}}/>
+<label htmlFor = "flightUnder" >Number of Flights(less than 4 hours)</label>
+<input type = "number" value = {submitedData.flightUnder} onChange = {handleOnChange} id = "flightUnder" name="flightUnder" style={{width: sizeInput}}/>
+<label htmlFor = "flightOver" >Number of Flights(more than 4 hours)</label>
+<input type = "number" value = {submitedData.flightOver} onChange = {handleOnChange} id = "flightOver" name="flightOver" style={{width: sizeInput}}/>
+</div>
+<div>
+<label htmlFor = "newspaper">Recycle Newspaper</label>
+<input type = "checkbox" id = "newspaper" onChange = {handleOnChangeCheckbox} value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} name="recyclePaper" />
+<label htmlFor = "tin" >Recycle Aluminum and Tin</label>
+<input type = "checkbox" id = "tin" onChange = {handleOnChangeCheckbox} value = {submitedData.recycleAluminium} checked = {submitedData.recycleAluminium} name="recycleAluminium" />
+</div>
+<input type = "submit" value = "Submit" /> */}
