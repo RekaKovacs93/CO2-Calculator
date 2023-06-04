@@ -44,7 +44,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
 
   return (
     <div>
-      <p>This is a chart</p>
+      <h3>{carbonTrackerCollection.emissions.recyclePaper + carbonTrackerCollection.totalEmissions}</h3>
       <Doughnut data={config.data} options={config.options}/>
     </div>
   );
