@@ -58,7 +58,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
          ctx.fillStyle = "lightgrey";
          const text = `${carbonTrackerCollection.totalEmissions} lbs`,
          textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 2;
+         textY = height / 1.85;
          ctx.fillText(text, textX, textY);
          ctx.save();
     } 
@@ -73,6 +73,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
 
 
   const averageData = {
+    labels: ["Electricity", "Gas", "Petrol", "Car", "Flights", "Recycling"],
     datasets: [
       {
         label: "Average CO2 emmissions in the UK",
@@ -95,7 +96,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
          ctx.fillStyle = "lightgrey";
          const text = "27998.71 lbs",
          textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 2;
+         textY = height / 1.85;
          ctx.fillText(text, textX, textY);
          ctx.save();
     } 
@@ -108,8 +109,6 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
 
   return (
     <div>
-      <h3>{carbonTrackerCollection.totalEmissions} lbs / annum</h3>
-
       <div className="charts">
       <div className="chart-container">
       <h3>Your CO2 Footprint</h3>
