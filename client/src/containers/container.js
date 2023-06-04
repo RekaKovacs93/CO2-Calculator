@@ -5,20 +5,20 @@ import MetersForm from "../components/MetersForm";
 
 function Container() {
   
-  const [carbonTrackerColection, setCarbonTrackerColection] = useState([])
+  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState(null)
   
   // const [newInstance, setNewInstance] = useState(null);
-  console.log(carbonTrackerColection)
+  console.log(carbonTrackerCollection)
 
   const addTrackingData = (data) => {
-    setCarbonTrackerColection([...carbonTrackerColection, data])
+    setCarbonTrackerCollection(data)
   }
 
   return (
     <>
       <h1>Hello guys</h1>
       <MetersForm addTrackingData = {addTrackingData}/>
-      <DoughnutChart/>
+      {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null}
     </>
   );
 }
