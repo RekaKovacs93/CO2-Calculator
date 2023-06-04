@@ -10,7 +10,7 @@ const createRouter = require('./helpers/create_router')
 
 MongoClient.connect('mongodb://127.0.0.1:27017', {useUnifiedTopology: true})
     .then((client)=> {
-        const db = client.db('CO2_tracker');
+        const db = client.db('CO2_trackings');
         const trackingsCollection = db.collection('trackings');
         const trackingsRouter = createRouter(trackingsCollection);
         app.use('/api/trackings/', trackingsRouter);
