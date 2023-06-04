@@ -39,7 +39,7 @@ const MetersForm = ({addTrackingData}) => {
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
         // event.preventDefault()
-
+        
         const newCarbonData = {
             electricBill: submitedData.electricBill * 105,
             gasBill: submitedData.gasBill * 105,
@@ -93,7 +93,7 @@ const MetersForm = ({addTrackingData}) => {
                     <Switch  onChange = {handleSwitchAluminium} value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
                 </Form.Item>
                 <Form.Item>
-                    <Button htmlType="submit">Submit</Button>
+                    <Button  type = 'primary' htmlType="submit">Submit</Button>
                 </Form.Item>
  
         </Form>
