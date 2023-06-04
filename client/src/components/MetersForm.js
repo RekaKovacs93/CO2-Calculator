@@ -50,7 +50,12 @@ const MetersForm = ({addTrackingData}) => {
             recyclePaper: (submitedData.recyclePaper? 0 : 184),
             recycleAluminium: (submitedData.recycleAluminium? 0 : 166)
         }
-        const newData = {entries: submitedData, emissions: newCarbonData}
+        const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
+        const newData = {
+            entries: submitedData, 
+            emissions: newCarbonData, 
+            totalEmissions: newTotalEmissions
+        }
         // postTracker(submitedData)
         // .then((data) => {addTrackingData(data)})
         // setSubmitedData(initialObj)
