@@ -50,10 +50,11 @@ const MetersForm = ({addTrackingData}) => {
             recyclePaper: (submitedData.recyclePaper? 0 : 184),
             recycleAluminium: (submitedData.recycleAluminium? 0 : 166)
         }
+        const newData = {entries: submitedData, emissions: newCarbonData}
         // postTracker(submitedData)
         // .then((data) => {addTrackingData(data)})
         // setSubmitedData(initialObj)
-        postTracker(newCarbonData)
+        postTracker(newData)
         .then((data) => {addTrackingData(data)})
         setSubmitedData(initialObj)
         form.resetFields()
@@ -63,16 +64,16 @@ const MetersForm = ({addTrackingData}) => {
     return (
         <Form form = {form} onFinish = {handleSubmit}>
                 <Form.Item label="Electric Bill" name = "electricBill" onChange = {handleOnChange}>
-                    <InputNumber  value = {submitedData.electricBill}  />
+                    <InputNumber  value = {submitedData.electricBill} addonAfter = "£" />
                 </Form.Item>
                 <Form.Item label="Gas Bill" name="gasBill"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.gasBill}  />
+                    <InputNumber value = {submitedData.gasBill} addonAfter = "£" />
                 </Form.Item>
                 <Form.Item label="Oil Bill" name="oilBill"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.oilBill} />
+                    <InputNumber value = {submitedData.oilBill} addonAfter = "£"/>
                 </Form.Item>
                 <Form.Item label="Mileage of Your Car" name="carMileage" onChange = {handleOnChange} >
-                    <InputNumber value = {submitedData.carMileage}  />
+                    <InputNumber value = {submitedData.carMileage} addonAfter = "mi" />
                 </Form.Item>
                 <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder"  onChange = {handleOnChange} >
                     <InputNumber value = {submitedData.flightUnder}  />
