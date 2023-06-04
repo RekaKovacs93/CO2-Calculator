@@ -11,9 +11,9 @@ export const postTracker = (payload) => {
     
     
 export const updateTracker = (payload) => {
-        return fetch(baseURL + booking._id, {
+        return fetch(baseURL + payload._id, {
           method: 'PUT',
-          body: JSON.stringify(booking),
+          body: JSON.stringify(payload),
           headers: {
             'Content-Type': 'application/json'
           }
