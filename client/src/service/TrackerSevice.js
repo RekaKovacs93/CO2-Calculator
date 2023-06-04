@@ -26,3 +26,8 @@ export const deleteTracker = (id) => {
           method: 'DELETE'
         });
     };
+
+export const getTracker = () => {
+    return fetch(baseURL)
+      .then(res => res.json());
+  }
