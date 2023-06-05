@@ -19,9 +19,14 @@ const MetersForm = ({addTrackingData}) => {
     const [submitedData, setSubmitedData] = useState(initialObj)
 
     const handleOnChange = (evt) => {
+        console.log(typeof evt.target.value)
+        
         const newSubmitedData = Object.assign({}, submitedData);
-        newSubmitedData[evt.target.id] = evt.target.value;
-        setSubmitedData(newSubmitedData)
+        if( parseFloat && parseFloat > 0){
+            newSubmitedData[evt.target.id] = parseFloat(evt.target.value);
+            setSubmitedData(newSubmitedData)
+        }
+        console.log(submitedData[evt.target.id])
     }
 
     const handleSwitchPaper = (evt) =>{
@@ -39,7 +44,7 @@ const MetersForm = ({addTrackingData}) => {
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
         // event.preventDefault()
-
+         console.log(submitedData)
         const newCarbonData = {
             electricBill: submitedData.electricBill * 105,
             gasBill: submitedData.gasBill * 105,
@@ -69,7 +74,7 @@ const MetersForm = ({addTrackingData}) => {
     return (
         <Form form = {form} onFinish = {handleSubmit}>
                 <Form.Item label="Electric Bill" name = "electricBill" onChange = {handleOnChange}>
-                    <InputNumber  value = {submitedData.electricBill} addonAfter = "£" />
+                    <InputNumber  value = {submitedData.electricBill} addonAfter = "£" min={0} />
                 </Form.Item>
                 <Form.Item label="Gas Bill" name="gasBill"  onChange = {handleOnChange}>
                     <InputNumber value = {submitedData.gasBill} addonAfter = "£" />
@@ -93,7 +98,7 @@ const MetersForm = ({addTrackingData}) => {
                     <Switch  onChange = {handleSwitchAluminium} value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
                 </Form.Item>
                 <Form.Item>
-                    <Button htmlType="submit">Submit</Button>
+                    <Button  type = 'primary' htmlType="submit">Submit</Button>
                 </Form.Item>
  
         </Form>
