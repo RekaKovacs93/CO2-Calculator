@@ -6,6 +6,7 @@ import MetersForm from "../components/MetersForm";
 import Suggestions from "../components/Suggestions";
 import UpdateForm from "../components/UpdateForm";
 import BarChartComp from "../components/BarChart_component";
+import LineChart from "../components/LineChart";
 
 function Container() {
   
@@ -24,7 +25,9 @@ function Container() {
       {carbonTrackerCollection ? <UpdateForm addTrackingData = {addTrackingData} carbonTrackerCollection={carbonTrackerCollection}/>: <MetersForm addTrackingData = {addTrackingData}/>}
 
       {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null}
+      
       {/* {carbonTrackerCollection ? <Suggestions carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null}
       {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null}
     </>
   );
