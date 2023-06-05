@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Collapse, Card, Space } from "antd";
+import { Collapse, Card, Space, List, Typography } from "antd";
+import { CheckCircleFilled, CloseCircleFilled, PlusCircleFilled } from '@ant-design/icons'
 
 const Suggestions = ({carbonTrackerCollection}) => {
 
@@ -63,10 +64,10 @@ const Suggestions = ({carbonTrackerCollection}) => {
 
     }
 
-    const lowEmissionsDisplay  = lowEmissions.map((name, index) => <li key = {index} > {name} </li>) 
-    const highEmissionsDisplay  = highEmissions.map((name, index) => <li key = {index} > {name} </li>) 
+    const lowEmissionsDisplay  = lowEmissions.map((name, index) => <List.Item key = {index} > <CheckCircleFilled style={{color: 'green'}}/> {name} </List.Item>) 
+    const highEmissionsDisplay  = highEmissions.map((name, index) => <List.Item key = {index} > <CloseCircleFilled style={{color: 'red'}} /> {name} </List.Item>) 
 
-    const highEmissionSolutions = highEmissions.map((name, index) => <li key={index}> {recommendationsForEmisions[name]} </li>)
+    const highEmissionSolutions = highEmissions.map((name, index) => <List.Item key={index}> <PlusCircleFilled style={{color: 'red'}} /> {recommendationsForEmisions[name]} </List.Item>)
     const lowEmissionMsg = (carbonTrackerCollection.totalEmissions > emissionsUKAvg && lowEmissions.length<=2) ? congratsSentence.max : 
         (carbonTrackerCollection.totalEmissions > emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.aboveAVG:
         (carbonTrackerCollection.totalEmissions <= emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.underAVG : congratsSentence.low
@@ -75,15 +76,15 @@ const Suggestions = ({carbonTrackerCollection}) => {
         <Space>
             
             <Collapse style={{width: 400, backgroundColor: 'green'}}>
-                <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300, height: 300}}><ul>{lowEmissionsDisplay}</ul></Card>}>
+                <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300, height: 300}}> <List> {lowEmissionsDisplay}</List> </Card>}>
                     <p>{lowEmissionMsg}</p>
                 </Collapse.Panel>
             </Collapse>
             <Collapse style={{width: 400, backgroundColor: 'red'}}>
-                <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300, height: 300}}><ul> {highEmissionsDisplay}</ul></Card>}>
-                    <ul>
+                <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300, height: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
+                    <List>
                         {highEmissionSolutions}
-                    </ul>
+                    </List>  
                 </Collapse.Panel>
             </Collapse>
         
