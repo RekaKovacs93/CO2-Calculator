@@ -1,12 +1,12 @@
-.charts{
-  display: flex;
+/* .charts{
+  /* display: flex;
   justify-content: center;
   gap: 20px
-}
-.chart-container{
+} */
+/* .chart-container{
   width: 400px;
   text-align: center;
-}
+} */ 
 body{
   margin: 10px 20px
 }

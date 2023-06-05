@@ -58,7 +58,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
          ctx.fillStyle = "lightgrey";
          const text = `${carbonTrackerCollection.totalEmissions} lbs`,
          textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 1.85;
+         textY = height / 2;
          ctx.fillText(text, textX, textY);
          ctx.save();
     } 
@@ -103,6 +103,29 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
   }]
 
 
+  const averageOptions ={
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const dataset = context.dataset;
+            const value = dataset.data[context.dataIndex];
+            return `${dataset.label}: ${value} lbs`;
+          },
+          footer: (context) => {
+            return `Total: ${carbonTrackerCollection.totalEmissions}`;
+          }
+        }
+      }
+    },
+    cutout: "80%",
+    radius: "0%",
+    animation: {
+        animateRotate: true
+      },
+  }
+
+
 
 
 
@@ -115,8 +138,8 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
       <Doughnut className="ch" data={config.data} options={config.options} plugins={config.plugins}/>
       </div>
       <div className="chart-container">
-      <h3>Average CO2 Footprint</h3>
-      <Doughnut className="ch" data={averageData} options={config.options} plugins={averagePlugins}/>
+      {/* <h3>Average CO2 Footprint</h3>
+      <Doughnut className="ch" data={averageData} options={averageOptions} plugins={averagePlugins}/> */}
       </div>
       </div>
     </div>
