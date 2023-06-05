@@ -18,15 +18,12 @@ const MetersForm = ({addTrackingData}) => {
     const   [form] = Form.useForm()
     const [submitedData, setSubmitedData] = useState(initialObj)
 
-    const handleOnChange = (evt) => {
-        console.log(typeof evt.target.value)
-        
+    const handleOnChange = (evt) => {        
         const newSubmitedData = Object.assign({}, submitedData);
-        if( parseFloat && parseFloat > 0){
+        if( parseFloat(evt.target.value) && parseFloat(evt.target.value) > 0){
             newSubmitedData[evt.target.id] = parseFloat(evt.target.value);
             setSubmitedData(newSubmitedData)
         }
-        console.log(submitedData[evt.target.id])
     }
 
     const handleSwitchPaper = (evt) =>{
@@ -77,19 +74,19 @@ const MetersForm = ({addTrackingData}) => {
                     <InputNumber  value = {submitedData.electricBill} addonAfter = "£" min={0} />
                 </Form.Item>
                 <Form.Item label="Gas Bill" name="gasBill"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.gasBill} addonAfter = "£" />
+                    <InputNumber value = {submitedData.gasBill} addonAfter = "£" min={0} />
                 </Form.Item>
                 <Form.Item label="Oil Bill" name="oilBill"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.oilBill} addonAfter = "£"/>
+                    <InputNumber value = {submitedData.oilBill} addonAfter = "£" min={0} />
                 </Form.Item>
                 <Form.Item label="Mileage of Your Car" name="carMileage" onChange = {handleOnChange} >
-                    <InputNumber value = {submitedData.carMileage} addonAfter = "mi" />
+                    <InputNumber value = {submitedData.carMileage} addonAfter = "mi" min={0} />
                 </Form.Item>
                 <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder"  onChange = {handleOnChange} >
-                    <InputNumber value = {submitedData.flightUnder}  />
+                    <InputNumber value = {submitedData.flightUnder} min={0}  />
                 </Form.Item>
                 <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.flightOver}  />
+                    <InputNumber value = {submitedData.flightOver} min={0} />
                 </Form.Item>
                 <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
                     <Switch onChange = {handleSwitchPaper}  value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
