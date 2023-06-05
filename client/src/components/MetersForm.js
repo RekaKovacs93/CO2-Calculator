@@ -22,6 +22,7 @@ const MetersForm = ({addTrackingData}) => {
     const handleOnChange = (changedValue, allValues) => { 
         
         console.log(dayjs(`${allValues["monthsSubmition"]}`))
+        console.log(submitedData)
         setSubmitedData(allValues)
     }
 

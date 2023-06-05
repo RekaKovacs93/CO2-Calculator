@@ -1,6 +1,7 @@
 import React from "react";
 import DoughnutChart from "../components/chart_component";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import { getTwelve } from "../service/TrackerSevice";
 import MetersForm from "../components/MetersForm";
 
 import Suggestions from "../components/Suggestions";
@@ -11,10 +12,17 @@ import LineChart from "../components/LineChart";
 function Container() {
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState(null)
+  // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   const addTrackingData = (data) => {
     setCarbonTrackerCollection(data)
   }
+
+  // useEffect (() => {
+  //   getTwelve().then((data) => {
+  //     setLastTwelveItems(data)
+  //   })
+  // }, [])
 
   return (
     <>
