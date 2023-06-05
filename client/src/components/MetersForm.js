@@ -74,32 +74,38 @@ const MetersForm = ({addTrackingData}) => {
                 <Form.Item name = "monthsSubmition" label = "Choose The Month">
                     <DatePicker picker="month"/>
                 </Form.Item>
+                <div className="formflex">
                 <Form.Item label="Electric Bill" name = "electricBill" >
-                    <InputNumber  value = {submitedData.electricBill} addonAfter = "£" min={0} />
+                    <InputNumber className = "input" value = {submitedData.electricBill} addonAfter = "£" min={0} />
                 </Form.Item>
                 <Form.Item label="Gas Bill" name="gasBill"  >
-                    <InputNumber value = {submitedData.gasBill} addonAfter = "£" min={0} />
+                    <InputNumber className = "input" value = {submitedData.gasBill} addonAfter = "£" min={0} />
                 </Form.Item>
                 <Form.Item label="Oil Bill" name="oilBill"  >
-                    <InputNumber value = {submitedData.oilBill} addonAfter = "£" min={0} />
+                    <InputNumber className = "input" value = {submitedData.oilBill} addonAfter = "£" min={0} />
                 </Form.Item>
+                </div>
+                <div className="formflex">
                 <Form.Item label="Mileage of Your Car" name="carMileage" >
-                    <InputNumber value = {submitedData.carMileage} addonAfter = "mi" min={0} />
+                    <InputNumber className = "input" value = {submitedData.carMileage} addonAfter = "mi" min={0} />
                 </Form.Item>
-                <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder"   >
-                    <InputNumber value = {submitedData.flightUnder} min={0}  />
+                <Form.Item label="Number of Short Flights ( < 4 hours )"  name="flightUnder"   >
+                    <InputNumber className = "inputsmall" value = {submitedData.flightUnder} min={0}  />
                 </Form.Item>
-                <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver" >
-                    <InputNumber value = {submitedData.flightOver} min={0} />
+                <Form.Item label="Number of Long Flights ( > 4 hours )"  name="flightOver" >
+                    <InputNumber className = "inputsmall" value = {submitedData.flightOver} min={0} />
                 </Form.Item>
+                </div>
+                <div className="formflex">
                 <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
-                    <Switch   value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
+                    <Switch className="switch" value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
                 </Form.Item>
                 <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
-                    <Switch   value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
+                    <Switch className="switch" value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
                 </Form.Item>
+                </div>
                 <Form.Item>
-                    <Button  type = 'primary' htmlType="submit">Submit</Button>
+                    <Button className = "button" type = 'primary' htmlType="submit">Submit</Button>
                 </Form.Item>
  
         </Form>
