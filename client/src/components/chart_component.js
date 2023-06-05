@@ -77,7 +77,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
     datasets: [
       {
         label: "Average CO2 emmissions in the UK",
-        data: [100, 70, 30, 300, 800, 50],
+        data: [105, 105, 113, 79, 550, 50],
         backgroundColor: ["rgba(163, 255, 255, 1)","rgba(135, 247, 252, 1)","rgba(107, 220, 225, 1)","rgba(79, 194, 199, 1)","rgba(46, 168, 174, 1)","rgba(0, 144, 149, 1)"],
         hoverOffset: 4,
       },
@@ -94,7 +94,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
          ctx.font = fontSize + "em sans-serif";
          ctx.textBaseline = "top";
          ctx.fillStyle = "lightgrey";
-         const text = "27998.71 lbs",
+         const text = "13800.94 lbs",
          textX = Math.round((width - ctx.measureText(text).width) / 2),
          textY = height / 1.85;
          ctx.fillText(text, textX, textY);
