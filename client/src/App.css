@@ -8,5 +8,21 @@
   text-align: center;
 } */ 
 body{
-  margin: 10px 20px
+  margin: 10px 20px; 
+  background-color: rgb(243, 243, 243);
+}
+header{
+  margin-bottom: 20px
+}
+.input{
+  width: 100px;
+}
+.inputsmall{
+  width: 35px;
+}
+.formflex{
+  display: flex;
+}
+.switch, .input, .inputsmall{
+  margin-right: 30px;
 }
