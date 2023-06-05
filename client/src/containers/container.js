@@ -11,9 +11,6 @@ function Container() {
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState(null)
   
-  // const [newInstance, setNewInstance] = useState(null);
-  console.log(carbonTrackerCollection)
-
   const addTrackingData = (data) => {
     setCarbonTrackerCollection(data)
   }
