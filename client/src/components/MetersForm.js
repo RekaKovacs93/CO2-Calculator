@@ -6,12 +6,12 @@ import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
 
 const MetersForm = ({addTrackingData}) => {
     const initialObj = {       
-        electricBill: "",
-        gasBill: "",
-        oilBill: "",
-        carMileage: "",
-        flightUnder: "",
-        flightOver: "",
+        electricBill: 0,
+        gasBill: 0,
+        oilBill: 0,
+        carMileage: 0,
+        flightUnder: 0,
+        flightOver: 0,
         recyclePaper: false,
         recycleAluminium: false
     }
