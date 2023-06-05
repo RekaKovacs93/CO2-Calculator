@@ -1,101 +1,100 @@
 import { useState } from "react";
 import { updateTracker } from "../service/TrackerSevice";
-import {InputNumber, Button, Switch, Form} from 'antd'
+import {InputNumber, Button, Switch, Form, DatePicker} from 'antd'
 import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
-
+import dayjs from 'dayjs'
 
 const UpdateForm = ({addTrackingData, carbonTrackerCollection}) => {
-    const updateObj = {       
-        electricBill: 0,
-        gasBill: 0,
-        oilBill: 0,
-        carMileage: 0,
-        flightUnder: 0,
-        flightOver: 0,
-        recyclePaper: false,
-        recycleAluminium: false
-    }
-    const   [form] = Form.useForm()
-    const [submitedData, setSubmitedData] = useState(carbonTrackerCollection.entries)
 
-    const handleOnChange = (evt) => {
-        const newSubmitedData = Object.assign({}, submitedData);
-        newSubmitedData[evt.target.id] = evt.target.value;
-        setSubmitedData(newSubmitedData)
-    }
+    const [form] = Form.useForm()
+    const [formData, setFormData] = useState(carbonTrackerCollection.entries)
+    const initDate = `${carbonTrackerCollection.entries.monthsSubmition}`
+    
+    const handleValuesChange = (changedValues, allValues) => {
+        setFormData(allValues)
+        // const newSubmitedData = Object.assign({}, formData);
+        // if( parseFloat(Object.values(changedValues)) && parseFloat(Object.values(changedValues)) > 0){
+        //     newSubmitedData[Object.keys(changedValues)] = parseFloat(Object.values(changedValues));
+        //     setFormData(newSubmitedData)
+        // }
+    };
 
-    const handleSwitchPaper = (evt) =>{
-        const newSubmitedData = Object.assign({}, submitedData);
-            newSubmitedData.recyclePaper = evt;
-            setSubmitedData(newSubmitedData)
+    // const handleSwitchPaper = (evt) =>{
+    //     const newSubmitedData = Object.assign({}, formData);
+    //         newSubmitedData.recyclePaper = evt;
+    //         setFormData(newSubmitedData)
 
-    }
-    const handleSwitchAluminium = (evt) =>{
-        const newSubmitedData = Object.assign({}, submitedData);
-        newSubmitedData.recycleAluminium = evt;
-        setSubmitedData(newSubmitedData)
-    }
+    // }
+    // const handleSwitchAluminium = (evt) =>{
+    //     const newSubmitedData = Object.assign({}, formData);
+    //     newSubmitedData.recycleAluminium = evt;
+    //     setFormData(newSubmitedData)
+    // }
 
     //handle the submit event, it sends all values to container to create an object
-    const handleSubmit = (event) =>{
+    const handleSubmit = (values) =>{
         // event.preventDefault()
-
+        console.log({values})
         const newCarbonData = {
-            electricBill: submitedData.electricBill * 105,
-            gasBill: submitedData.gasBill * 105,
-            oilBill: submitedData.carMileage * 113,
-            carMileage: submitedData.carMileage * 0.79,
-            flightUnder: submitedData.flightUnder * 1100,
-            flightOver: submitedData.flightOver * 4400,
-            recyclePaper: (submitedData.recyclePaper? 0 : 184),
-            recycleAluminium: (submitedData.recycleAluminium? 0 : 166)
+            electricBill: formData.electricBill * 105,
+            gasBill: formData.gasBill * 105,
+            oilBill: formData.carMileage * 113,
+            carMileage: formData.carMileage * 0.79,
+            flightUnder: formData.flightUnder * 1100,
+            flightOver: formData.flightOver * 4400,
+            recyclePaper: (formData.recyclePaper? 0 : 184),
+            recycleAluminium: (formData.recycleAluminium? 0 : 166)
         }
         const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
         const newData = {
-            entries: submitedData, 
+            _id: carbonTrackerCollection._id,
+            entries: values, 
             emissions: newCarbonData, 
             totalEmissions: newTotalEmissions
         }
-        // postTracker(submitedData)
-        // .then((data) => {addTrackingData(data)})
-        // setSubmitedData(initialObj)
+
         updateTracker(newData)
-        .then((data) => {addTrackingData(data)})
-        setSubmitedData(updateObj)
+        .then(() => {
+            
+            addTrackingData(newData)
+        })
+        
         form.resetFields()
-       
+
     }
 
     return (
-        <Form form = {form} onFinish = {handleSubmit}>
-                <Form.Item label="Electric Bill" name = "electricBill" onChange = {handleOnChange}>
-                    <InputNumber  value = {submitedData.electricBill} addonAfter = "£" />
-                </Form.Item>
-                <Form.Item label="Gas Bill" name="gasBill"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.gasBill} addonAfter = "£" />
-                </Form.Item>
-                <Form.Item label="Oil Bill" name="oilBill"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.oilBill} addonAfter = "£"/>
-                </Form.Item>
-                <Form.Item label="Mileage of Your Car" name="carMileage" onChange = {handleOnChange} >
-                    <InputNumber value = {submitedData.carMileage} addonAfter = "mi" />
-                </Form.Item>
-                <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder"  onChange = {handleOnChange} >
-                    <InputNumber value = {submitedData.flightUnder}  />
-                </Form.Item>
-                <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver"  onChange = {handleOnChange}>
-                    <InputNumber value = {submitedData.flightOver}  />
-                </Form.Item>
-                <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
-                    <Switch onChange = {handleSwitchPaper}  value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
-                </Form.Item>
-                <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
-                    <Switch  onChange = {handleSwitchAluminium} value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
-                </Form.Item>
-                <Form.Item>
-                    <Button htmlType="submit">Update</Button>
-                </Form.Item>
- 
+        <Form initialValues={{formData}} form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
+            <Form.Item name = "monthsSubmitions" label = "Choose The Month">
+                <DatePicker picker="month" format="YYYY-MM" defaultValue={dayjs(initDate)}/>
+            </Form.Item>
+            <Form.Item label="Electric Bill" name="electricBill">
+                <InputNumber addonAfter="£" min={0} max={9999999}/>
+            </Form.Item>
+            <Form.Item label="Gas Bill" name="gasBill">
+                <InputNumber addonAfter = "£" min={0} max={9999999}/>
+            </Form.Item>
+            <Form.Item label="Oil Bill" name="oilBill">
+                <InputNumber addonAfter = "£" min={0} max={9999999}/>
+            </Form.Item>
+            <Form.Item label="Mileage of Your Car" name="carMileage">
+                <InputNumber addonAfter = "mi" min={0} max={9999999} />
+            </Form.Item>
+            <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder">
+                <InputNumber min={0}  max={9999999}/>
+            </Form.Item>
+            <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver">
+                <InputNumber min={0}  max={9999999} />
+            </Form.Item>
+            <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
+                <Switch  checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />} />
+            </Form.Item>
+            <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
+                <Switch checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
+            </Form.Item>
+            <Form.Item>
+                <Button htmlType="submit">Update</Button>
+            </Form.Item>
         </Form>
     );
 };
