@@ -75,12 +75,12 @@ const Suggestions = ({carbonTrackerCollection}) => {
     return (
         <Space>
             
-            <Collapse style={{width: 400, backgroundColor: 'green'}}>
+            <Collapse style={{ height: '100%', backgroundColor: 'green'}}>
                 <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300, height: 300}}> <List> {lowEmissionsDisplay}</List> </Card>}>
                     <p>{lowEmissionMsg}</p>
                 </Collapse.Panel>
             </Collapse>
-            <Collapse style={{width: 400, backgroundColor: 'red'}}>
+            <Collapse style={{ backgroundColor: 'red'}}>
                 <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300, height: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
                     <List>
                         {highEmissionSolutions}
