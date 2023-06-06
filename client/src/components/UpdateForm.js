@@ -4,11 +4,12 @@ import {InputNumber, Button, Switch, Form, DatePicker} from 'antd'
 import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
 import dayjs from 'dayjs'
 
-const UpdateForm = ({addTrackingData, carbonTrackerCollection}) => {
-
+const UpdateForm = ({updateLocalData, carbonInfo}) => {
+    console.log(carbonInfo.entries)
     const [form] = Form.useForm()
-    const [formData, setFormData] = useState(carbonTrackerCollection.entries)
-    const initDate = `${carbonTrackerCollection.entries.monthsSubmition}`
+    const [formData, setFormData] = useState(carbonInfo.entries)
+    console.log(formData)
+    const initDate = `${carbonInfo.entries.monthsSubmition}`
     
     const handleValuesChange = (changedValues, allValues) => {
         setFormData(allValues)
@@ -47,7 +48,7 @@ const UpdateForm = ({addTrackingData, carbonTrackerCollection}) => {
         }
         const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
         const newData = {
-            _id: carbonTrackerCollection._id,
+            _id: carbonInfo._id,
             entries: values, 
             emissions: newCarbonData, 
             totalEmissions: newTotalEmissions
@@ -56,7 +57,7 @@ const UpdateForm = ({addTrackingData, carbonTrackerCollection}) => {
         updateTracker(newData)
         .then(() => {
             
-            addTrackingData(newData)
+            updateLocalData(newData)
         })
         
         form.resetFields()
@@ -64,9 +65,9 @@ const UpdateForm = ({addTrackingData, carbonTrackerCollection}) => {
     }
 
     return (
-        <Form initialValues={{formData}} form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
+        <Form initialValues={formData} form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
             <Form.Item name = "monthsSubmitions" label = "Choose The Month">
-                <DatePicker picker="month" format="YYYY-MM" defaultValue={dayjs(initDate)}/>
+                <DatePicker picker="month" format="YYYY-MM"/>
             </Form.Item>
             <Form.Item label="Electric Bill" name="electricBill">
                 <InputNumber addonAfter="£" min={0} max={9999999}/>

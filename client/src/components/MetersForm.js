@@ -3,6 +3,7 @@ import { postTracker } from "../service/TrackerSevice";
 import {InputNumber, Button, Switch, Form, DatePicker} from 'antd';
 import { CheckOutlined, CloseOutlined} from '@ant-design/icons';
 import dayjs from 'dayjs';
+import {useNavigate} from 'react-router-dom'
 
 
 const MetersForm = ({addTrackingData}) => {
@@ -16,7 +17,9 @@ const MetersForm = ({addTrackingData}) => {
         recyclePaper: false,
         recycleAluminium: false
     }
+    const navigate = useNavigate()
     const   [form] = Form.useForm()
+    let object1 ={_id: ""}
     const [submitedData, setSubmitedData] = useState(initialObj)
 
     const handleOnChange = (changedValue, allValues) => { 
@@ -62,11 +65,17 @@ const MetersForm = ({addTrackingData}) => {
         // .then((data) => {addTrackingData(data)})
         // setSubmitedData(initialObj)
         postTracker(newData)
-        .then((data) => {addTrackingData(data)})
-        console.log(newData)
+        .then((data) => {handleData(data)} )
         setSubmitedData(initialObj)
         form.resetFields()
        
+    }
+
+    const handleData = (data)=>{
+        addTrackingData(data)
+        object1= data
+        navigate("/submit-form/" + object1._id)
+        
     }
 
     return (
