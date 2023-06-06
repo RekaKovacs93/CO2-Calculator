@@ -42,9 +42,9 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues})=> {
              
              
             
-            <label>Delete Emission </label>
+            {/* <label>Delete Emission </label>
             
-            <button onClick={handleDelete} value={emission._id}>Delete Emission</button>
+            <button onClick={handleDelete} value={emission._id}>Delete Emission</button> */}
       </Card>
             
         </>
