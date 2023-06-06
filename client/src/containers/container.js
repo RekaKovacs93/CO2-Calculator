@@ -20,6 +20,8 @@ import Overview from "../components/Overview";
 
 
 function Container() {
+  const months = [  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const years = [2016, 2017, 2018, 2019, 2016, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([
     {
@@ -77,14 +79,38 @@ function Container() {
   console.log(carbonTrackerCollection)
   const addTrackingData = (data) => {
     setCarbonTrackerCollection([...carbonTrackerCollection, data])
-    setCarbonTrackerCollection([...carbonTrackerCollection, data])
   }
 
-  // useEffect (() => {
-  //   getTwelve().then((data) => {
-  //     setLastTwelveItems(data)
-  //   })
-  // }, [])
+  useEffect (() => {
+    // getTwelve().then((data) => {
+    //   setLastTwelveItems(data)
+    // })
+    getMonthsAndYears()
+  }, [])
+  const getMonthsAndYears = () =>{
+    const allMonthsAndYears = years.map((year) => {
+      console.log(year)
+      const yearObj = {}
+      yearObj[year] = months
+      return yearObj
+      // return yearObj[`${year}`] = months
+    })
+    setMonthsOfTheYear(allMonthsAndYears)
+    console.log(monthsOfTheYear)
+  }
+  console.log(monthsOfTheYear)
+  
+
+  const updateTrackingData = (data, oldData) =>{
+  
+    const index = carbonTrackerCollection.map(elm => elm._id).indexOf(oldData._id)
+    const collectionLocal = carbonTrackerCollection
+    collectionLocal[index] = data
+    setCarbonTrackerCollection(collectionLocal)
+    console.log(carbonTrackerCollection)
+    console.log(index)
+  }
+
 
   return (
 
@@ -93,12 +119,27 @@ function Container() {
       <Navbar/>
       <Routes>
         <Route path="/" element=""/>
-        <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
+        <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData} monthsOfTheYear ={monthsOfTheYear}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
+        <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
+      
+      
+      {/* <Navbar/> */}
+      
+      {/* <MetersForm addTrackingData = {addTrackingData}/> */}
+
+      {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      
+      {/* {carbonTrackerCollection ? <Suggestions carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
+      {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
     </Router>
       // {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       
