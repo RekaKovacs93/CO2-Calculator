@@ -1,5 +1,16 @@
 const baseURL = 'http://localhost:9000/api/trackings/'
 
+
+// const lastTwelve = db.collection('trackings').aggregate([
+//   { $sort: { createdAt: -1 } },  // Sort documents in descending order based on 'createdAt'
+//   { $limit: 12 }  // Limit the result to the first 12 documents
+// ]).toArray();
+// export const getTwelve = () => {
+//   return fetch (baseURL + 'twelve')
+//   .then(res => res.json())
+//   .then(data => data.lastTwelve)
+// }
+
 export const postTracker = (payload) => {
     return fetch ( baseURL, {
         method: 'POST',
