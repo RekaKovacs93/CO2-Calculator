@@ -14,9 +14,10 @@ import SuccessfulSubmition from "../components/SuccesfullSubmition";
 import ErrorPage from "../components/ErrorPage";
 import DisplayInfo from "../components/DisplayInfo";
 import LineChart from "../components/LineChart";
-import EmissionsCard from "../components/EmissionsCard";
+import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
-
+import Overview from "../components/Overview";
+import HomePage from "../components/HomePage";
 
 
 function Container() {
@@ -143,7 +144,8 @@ function Container() {
       {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
       {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
     </Router>
-  );
+
+  )
 }
 
 export default Container;

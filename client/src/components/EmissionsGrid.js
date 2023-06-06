@@ -7,7 +7,7 @@ const EmissionsGrid = ({EmissionValues})=> {
 
     return (
         <>
-        <h2>List of all emissions</h2>
+        
             {allEmissions}
         </>
     )
