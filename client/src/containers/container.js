@@ -9,14 +9,16 @@ import Suggestions from "../components/Suggestions";
 import UpdateForm from "../components/UpdateForm";
 import BarChartComp from "../components/BarChart_component";
 import LineChart from "../components/LineChart";
+import EmissionsCard from "../components/EmissionsCard";
+import EmissionsGrid from "../components/EmissionsGrid";
 
 function Container() {
   
-  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState(null)
+  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
   // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   const addTrackingData = (data) => {
-    setCarbonTrackerCollection(data)
+    setCarbonTrackerCollection([...carbonTrackerCollection, data])
   }
 
   // useEffect (() => {
@@ -31,14 +33,17 @@ function Container() {
       
       
       <Navbar/>
-      {carbonTrackerCollection ? <UpdateForm addTrackingData = {addTrackingData} carbonTrackerCollection={carbonTrackerCollection}/>: <MetersForm addTrackingData = {addTrackingData}/>}
+      
+      <MetersForm addTrackingData = {addTrackingData}/>
 
-      {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null}
+      {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       
       {/* {carbonTrackerCollection ? <Suggestions carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
-      {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null}
-      {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null}
-      
+      {/* {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null} 
+      {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
     </>
   );
 }

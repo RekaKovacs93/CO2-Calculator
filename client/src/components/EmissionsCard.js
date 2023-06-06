@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { deleteTracker } from "../service/TrackerSevice"
 
-const EmissionsCard = ({emission, removeEmission})=> { 
+const EmissionsCard = ({emission, removeEmission, EmissionValues})=> { 
 
-    
+    if (!emission) {
+        return
+    }
+
 
     const handleDelete = () => {
         deleteTracker(emission._id).then(()=>{
@@ -11,20 +14,18 @@ const EmissionsCard = ({emission, removeEmission})=> {
         })
     }
 
-    
-
     return (
         <>
-            <p>{EmissionValues.electricBill}</p>  
-            <p>{EmissionValues.gasBill}</p>  
-            <p>{EmissionValues.oilBill}</p>  
-            <p>{EmissionValues.carMileage}</p>  
-            <p>{EmissionValues.flightUnder}</p>  
-            <p>{EmissionValues.flightOver}</p>  
-            <p>{EmissionValues.recyclePaper}</p>  
-            <p>{EmissionValues.recycleAluminium}</p>  
+            <p>Electric Bill:{EmissionValues.electricBill}</p>  
+            <p>Gas Bill:{EmissionValues.gasBill}</p>  
+            <p>Oil Bill:{EmissionValues.oilBill}</p>  
+            <p>Car Mileage:{EmissionValues.carMileage}</p>  
+            <p>Flight Under 4 Hours:{EmissionValues.flightUnder}</p>  
+            <p>Flight Over 4 Hours:{EmissionValues.flightOver}</p>  
+            <p>Recycle Paper:{EmissionValues.recyclePaper}</p>  
+            <p>Recycle Aluminium:{EmissionValues.recycleAluminium}</p>  
             <p> Total emissions: </p>
-            <p>{EmissionValues.totalEmissions} </p>
+            <p>{emission.totalEmissions} </p>
              
              
             

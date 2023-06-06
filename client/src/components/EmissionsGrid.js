@@ -1,8 +1,8 @@
 import EmissionsCard from "./EmissionsCard"
-const EmissionsGrid = ({emissions})=> {
-
-    const allEmissions = emissions.map((emission)=>{
-     return <EmissionsCard key={emission._id} EmissionValues={emission.emissions} TotalEmission= {emission.totalEmissions} />
+const EmissionsGrid = ({EmissionValues})=> {
+    console.log(EmissionValues)
+    const allEmissions = EmissionValues.map((emission, index)=>{
+     return <EmissionsCard key={emission._id} EmissionValues={emission.emissions} TotalEmission= {emission.totalEmissions} emission={emission}/>
     })
 
     return (
