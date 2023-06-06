@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { postTracker } from "../service/TrackerSevice";
-import {InputNumber, Button, Switch, Form, DatePicker} from 'antd';
+import {InputNumber, Button, Switch, Form, DatePicker, Select, Option} from 'antd';
 import { CheckOutlined, CloseOutlined} from '@ant-design/icons';
 import dayjs from 'dayjs';
 import {useNavigate} from 'react-router-dom'
 
 
-const MetersForm = ({addTrackingData}) => {
+const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
     const initialObj = {       
         electricBill: 0,
         gasBill: 0,
@@ -80,8 +80,15 @@ const MetersForm = ({addTrackingData}) => {
 
     return (
         <Form initialValues={submitedData} form={form} onFinish={handleSubmit} onValuesChange={handleOnChange}>
-                <Form.Item name = "monthsSubmition" label = "Choose The Month">
-                    <DatePicker picker="month"/>
+                <Form.Item name = "yearofSubmition" label = "Choose The Month">
+                    <Select>
+
+                    </Select>
+                </Form.Item>
+                <Form.Item name = "monthOfSubmition" label = "Choose The Month">
+                    <Select>
+                       
+                    </Select>
                 </Form.Item>
                 <div className="formflex">
                 <Form.Item label="Electric Bill" name = "electricBill" >
