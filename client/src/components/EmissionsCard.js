@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { deleteTracker } from "../service/TrackerSevice"
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Avatar, Card, Skeleton, Switch } from 'antd';
 
 const EmissionsCard = ({emission, removeEmission, EmissionValues})=> { 
 
@@ -16,9 +18,20 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues})=> {
 
     return (
         <>
-            <p>Electric Bill:{EmissionValues.electricBill}</p>  
-            <p>Gas Bill:{EmissionValues.gasBill}</p>  
-            <p>Oil Bill:{EmissionValues.oilBill}</p>  
+        <Card
+        style={{
+          width: 300,
+          marginTop: 16,
+        }}
+        actions={[
+          <SettingOutlined key="setting" />,
+          <EditOutlined key="edit" />,
+          <EllipsisOutlined key="ellipsis" />,
+        ]}
+      >
+        <p>Electric:{EmissionValues.electricBill}</p>  
+            <p>Gas:{EmissionValues.gasBill}</p>  
+            <p>Oil:{EmissionValues.oilBill}</p>  
             <p>Car Mileage:{EmissionValues.carMileage}</p>  
             <p>Flight Under 4 Hours:{EmissionValues.flightUnder}</p>  
             <p>Flight Over 4 Hours:{EmissionValues.flightOver}</p>  
@@ -32,6 +45,8 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues})=> {
             <label>Delete Emission </label>
             
             <button onClick={handleDelete} value={emission._id}>Delete Emission</button>
+      </Card>
+            
         </>
     )
 }
