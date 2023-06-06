@@ -17,6 +17,7 @@ import LineChart from "../components/LineChart";
 import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
 import Overview from "../components/Overview";
+import HomePage from "../components/HomePage";
 
 
 function Container() {
