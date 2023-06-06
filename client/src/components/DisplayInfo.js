@@ -34,7 +34,7 @@ const DisplayInfo = () =>{
     return(
         <>
             {carbonInfo? <div>
-            <UpdateForm   addTrackingData={updateLocalData} carbonInfo={carbonInfo}/>
+            {/* <UpdateForm   addTrackingData={updateLocalData} carbonInfo={carbonInfo}/> */}
             <DoughnutChart carbonTrackerCollection={carbonInfo}/>
             <BarChartComp carbonTrackerCollection={carbonInfo}/>
             <Suggestions carbonInfo={carbonInfo}/>

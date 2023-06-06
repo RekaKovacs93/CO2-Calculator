@@ -3,25 +3,34 @@ import Chart from 'chart.js/auto';
 import { Doughnut } from "react-chartjs-2";
 
 
-const DoughnutChart = ({carbonTrackerCollection}) => {
+const DoughnutChart = ({EmissionValues, TotalEmission}) => {
   const data = {
     labels: ["Electricity", "Gas", "Petrol", "Car", "Flights", "Recycling"],
     datasets: [
       {
         label: "CO2 emmissions",
+        // data: [
+        //   EmissionValues.emissions.electricBill,
+        //   EmissionValues.emissions.gasBill,
+        //   EmissionValues.emissions.oilBill,
+        //   EmissionValues.emissions.carMileage,
+        //   EmissionValues.emissions.flightUnder + EmissionValues.emissions.flightOver,
+        //   EmissionValues.emissions.recyclePaper + EmissionValues.emissions.recycleAluminium
+        // ],
         data: [
-          carbonTrackerCollection.emissions.electricBill,
-          carbonTrackerCollection.emissions.gasBill,
-          carbonTrackerCollection.emissions.oilBill,
-          carbonTrackerCollection.emissions.carMileage,
-          carbonTrackerCollection.emissions.flightUnder + carbonTrackerCollection.emissions.flightOver,
-          carbonTrackerCollection.emissions.recyclePaper + carbonTrackerCollection.emissions.recycleAluminium
+          EmissionValues.electricBill,
+          EmissionValues.gasBill,
+          EmissionValues.oilBill,
+          EmissionValues.carMilage,
+          EmissionValues.flightUnder + EmissionValues.flightOver,
+          EmissionValues.recyclePaper + EmissionValues.recycleAluminium,
         ],
         backgroundColor: ["rgba(163, 255, 255, 1)","rgba(135, 247, 252, 1)","rgba(107, 220, 225, 1)","rgba(79, 194, 199, 1)","rgba(46, 168, 174, 1)","rgba(0, 144, 149, 1)"],
         hoverOffset: 4,
       },
     ],
   };
+
 
   const options ={
     plugins: {
@@ -33,13 +42,16 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
             return `${dataset.label}: ${value} lbs`;
           },
           footer: (context) => {
-            return `Total: ${carbonTrackerCollection.totalEmissions}`;
+            return `Total: ${TotalEmission}`;
           }
         }
-      }
+      },
+      legend: {
+        display: false  // Hide the labels from the top
+      },
     },
     cutout: "80%",
-    radius: "40%",
+    radius: "100%",
     animation: {
         animateRotate: true
       },
@@ -52,13 +64,13 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
          height = chart.height,
          ctx = chart.ctx;
          ctx.restore();
-         const fontSize = (height / 360).toFixed(2);
+         const fontSize = (height / 120).toFixed(2);
          ctx.font = fontSize + "em sans-serif";
          ctx.textBaseline = "top";
          ctx.fillStyle = "lightgrey";
-         const text = `${carbonTrackerCollection.totalEmissions} lbs`,
+         const text = `${TotalEmission} lbs`,
          textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 2;
+         textY = height / 2.2;
          ctx.fillText(text, textX, textY);
          ctx.save();
     } 
@@ -113,7 +125,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
   //           return `${dataset.label}: ${value} lbs`;
   //         },
   //         footer: (context) => {
-  //           return `Total: ${carbonTrackerCollection.totalEmissions}`;
+  //           return `Total: ${EmissionValues.totalEmissions}`;
   //         }
   //       }
   //     }
@@ -134,7 +146,7 @@ const DoughnutChart = ({carbonTrackerCollection}) => {
     <div>
       <div className="charts">
       <div className="chart-container">
-      <h3>Your CO2 Footprint</h3>
+      {/* <h3>Your CO2 Footprint</h3> */}
       <Doughnut className="ch" data={config.data} options={config.options} plugins={config.plugins}/>
       </div>
       <div className="chart-container">
