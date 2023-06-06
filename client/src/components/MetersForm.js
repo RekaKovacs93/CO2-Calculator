@@ -19,7 +19,7 @@ const MetersForm = ({addTrackingData}) => {
     }
     const navigate = useNavigate()
     const   [form] = Form.useForm()
-    let object1 ={_id: ""}
+    let object1 ={}
     const [submitedData, setSubmitedData] = useState(initialObj)
 
     const handleOnChange = (changedValue, allValues) => { 
