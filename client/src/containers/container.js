@@ -25,61 +25,63 @@ function Container() {
   const years = [2016, 2017, 2018, 2019, 2016, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([
-    {
-      "_id": "647c86c3ec969562398325bf",
-      "entries": {
-        "electricBill": "455",
-        "gasBill": "",
-        "oilBill": "",
-        "carMileage": "",
-        "flightUnder": "",
-        "flightOver": "",
-        "recyclePaper": false,
-        "recycleAluminium": false
-      },
-      "emissions": {
-        "electricBill": 47775,
-        "gasBill": 0,
-        "oilBill": 0,
-        "carMileage": 0,
-        "flightUnder": 0,
-        "flightOver": 0,
-        "recyclePaper": 184,
-        "recycleAluminium": 166
-      },
-      "totalEmissions": 48125
+  {
+    "_id": "647f1eb0a4d27a4c3c69e705",
+    "entries": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 560,
+    "flightOver": 10,
+    "recyclePaper": true,
+    "recycleAluminium": true
     },
-    {
-      "_id": "647f28d7a9e96bcd0aaadf96",
-      "entries": {
-        "monthsSubmition": "2023-02-06T13:38:30.065Z",
-        "electricBill": 36,
-        "gasBill": 37,
-        "oilBill": 0,
-        "carMileage": 0,
-        "flightUnder": 32,
-        "flightOver": 0,
-        "recyclePaper": false,
-        "recycleAluminium": false
-      },
-      "emissions": {
-        "electricBill": 3780,
-        "gasBill": 3885,
-        "oilBill": 0,
-        "carMileage": 0,
-        "flightUnder": 35200,
-        "flightOver": 0,
-        "recyclePaper": 184,
-        "recycleAluminium": 166
-      },
-      "totalEmissions": 43215
+    "emissions": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 616000,
+    "flightOver": 44000,
+    "recyclePaper": 0,
+    "recycleAluminium": 0
+    },
+    "totalEmissions": 660000
+  },
+  {
+    "_id": "647f1e40a4d27a4c3c69e704",
+    "entries": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 0,
+    "flightOver": 0,
+    "recyclePaper": false,
+    "recycleAluminium": false
+    },
+    "emissions": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 0,
+    "flightOver": 0,
+    "recyclePaper": 184,
+    "recycleAluminium": 166
+    },
+    "totalEmissions": 350
     }
+
   ])
+  const [monthsOfTheYear, setMonthsOfTheYear] = useState([])
   // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   console.log(carbonTrackerCollection)
   const addTrackingData = (data) => {
     setCarbonTrackerCollection([...carbonTrackerCollection, data])
+
   }
 
   useEffect (() => {
