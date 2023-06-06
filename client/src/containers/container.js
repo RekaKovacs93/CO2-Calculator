@@ -22,7 +22,6 @@ import Overview from "../components/Overview";
 function Container() {
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
-  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
   // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   console.log(carbonTrackerCollection)
@@ -50,12 +49,6 @@ function Container() {
         <Route path="/display/:id" element={<DisplayInfo/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
-      
-      
-      
-      
-      
-
     </Router>
       // {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       
