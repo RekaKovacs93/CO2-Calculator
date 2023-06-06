@@ -5,7 +5,7 @@ import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
 import dayjs from 'dayjs'
 
 const UpdateForm = ({updateLocalData, carbonInfo}) => {
-    console.log(carbonInfo.entries)
+    // console.log(carbonInfo.entries)
     const [form] = Form.useForm()
     const [formData, setFormData] = useState(carbonInfo.entries)
     console.log(formData)
