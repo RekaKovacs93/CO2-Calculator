@@ -1,36 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { updateTracker } from "../service/TrackerSevice";
 import {InputNumber, Button, Switch, Form, DatePicker} from 'antd'
 import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
 import dayjs from 'dayjs'
+import { useParams, useNavigate} from 'react-router-dom'
+import { getOneTracker } from "../service/TrackerSevice";
 
-const UpdateForm = ({updateLocalData, carbonInfo}) => {
-    // console.log(carbonInfo.entries)
-    const [form] = Form.useForm()
-    const [formData, setFormData] = useState(carbonInfo.entries)
-    console.log(formData)
-    const initDate = `${carbonInfo.entries.monthsSubmition}`
+const UpdateForm = ({updateTrackingData}) => {
+    // const initialObj = {
+    //     "electricBill": 0,
+    //     "gasBill": 0,
+    //     "oilBill": 0,
+    //     "carMileage": 0,
+    //     "flightUnder": 0,
+    //     "flightOver": 0,
+    //     "recyclePaper": false,
+    //     "recycleAluminium": false
+    // }
     
+    const {id} = useParams()
+    const navigate = useNavigate()
+    const [form] = Form.useForm()
+    const [carbonInfo, setCarbonInfo] = useState(null)
+    const [formData, setFormData] = useState(null)
+    //console.log(formData)
+    // const initDate = `${carbonInfo.entries.monthsSubmition}`
+
+    useEffect(() =>{
+        getInfoFormDB()
+    },[]) 
+    useEffect(() =>{
+        form.setFieldsValue(formData)
+    },[formData]) 
+
+  
+
+    const getInfoFormDB = () =>{
+        
+        getOneTracker(id)
+        .then(data=>{
+            setCarbonInfo(data)
+            setFormData(data.entries)
+        })
+
+        // .then(data =>{setFormData(data)} )
+        // console.log(carbonInfo)
+        // setFormData(carbonInfo.entries)
+    }
+
+    // if (!formData && !carbonInfo) {
+    //     return
+    // }
+   
     const handleValuesChange = (changedValues, allValues) => {
         setFormData(allValues)
-        // const newSubmitedData = Object.assign({}, formData);
-        // if( parseFloat(Object.values(changedValues)) && parseFloat(Object.values(changedValues)) > 0){
-        //     newSubmitedData[Object.keys(changedValues)] = parseFloat(Object.values(changedValues));
-        //     setFormData(newSubmitedData)
-        // }
+
     };
 
-    // const handleSwitchPaper = (evt) =>{
-    //     const newSubmitedData = Object.assign({}, formData);
-    //         newSubmitedData.recyclePaper = evt;
-    //         setFormData(newSubmitedData)
 
-    // }
-    // const handleSwitchAluminium = (evt) =>{
-    //     const newSubmitedData = Object.assign({}, formData);
-    //     newSubmitedData.recycleAluminium = evt;
-    //     setFormData(newSubmitedData)
-    // }
 
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (values) =>{
@@ -57,18 +84,18 @@ const UpdateForm = ({updateLocalData, carbonInfo}) => {
         updateTracker(newData)
         .then(() => {
             
-            updateLocalData(newData)
+            updateTrackingData(newData, carbonInfo)
         })
-        
+        navigate(`/display/${id}`)
         form.resetFields()
 
     }
-
     return (
-        <Form initialValues={formData} form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
-            <Form.Item name = "monthsSubmitions" label = "Choose The Month">
+        
+        <Form  form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
+            {/* <Form.Item name = "monthsSubmitions" label = "Choose The Month">
                 <DatePicker picker="month" format="YYYY-MM"/>
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item label="Electric Bill" name="electricBill">
                 <InputNumber addonAfter="£" min={0} max={9999999}/>
             </Form.Item>

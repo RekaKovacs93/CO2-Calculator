@@ -15,7 +15,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues})=> {
             removeEmission(emission._id)
         })
     }
-
+    
     return (
         <>
         <Card
@@ -33,7 +33,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues})=> {
             <p>Gas:{EmissionValues.gasBill}</p>  
             <p>Oil:{EmissionValues.oilBill}</p>  
             <p>Car Mileage:{EmissionValues.carMileage}</p>  
-            <p>Flight Under 4 Hours:{EmissionValues.flightUnder}</p>  
+            <p>Flight Under 4 Hours:{EmissionValues.flightUnder + EmissionValues.flightOver}</p>  
             <p>Flight Over 4 Hours:{EmissionValues.flightOver}</p>  
             <p>Recycle Paper:{EmissionValues.recyclePaper}</p>  
             <p>Recycle Aluminium:{EmissionValues.recycleAluminium}</p>  
