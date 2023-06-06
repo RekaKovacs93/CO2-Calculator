@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Collapse, Card, Space, List, Typography } from "antd";
+import { Collapse, Card, Space, List, Typography, AutoComplete } from "antd";
 import { CheckCircleFilled, CloseCircleFilled, PlusCircleFilled } from '@ant-design/icons'
 
-const Suggestions = ({carbonTrackerCollection}) => {
+const Suggestions = ({carbonInfo}) => {
 
     const threshold = {
         electricBill: 0,
@@ -42,17 +42,17 @@ const Suggestions = ({carbonTrackerCollection}) => {
     const [highEmissions, setHighEmissions] = useState([])
 
     const highLowEmissions = () =>{
-        const highValues = Object.entries(carbonTrackerCollection.emissions).filter((emi) => {
+        const highValues = Object.entries(carbonInfo.emissions).filter((emi) => {
             return parseInt(emi[1])  > threshold[emi[0]]
         })
-        const lowValues = Object.entries(carbonTrackerCollection.emissions).filter((emi) => {
+        const lowValues = Object.entries(carbonInfo.emissions).filter((emi) => {
             return parseInt(emi[1])  <= threshold[emi[0]]
         })
 
         setHighEmissions(highValues.map((element) => element[0]))
         setLowEmissions(lowValues.map((element) => element[0]))
         // console.log(hihgValues)
-        // Object.entries(carbonTrackerCollection.emissions).forEach((key) => {
+        // Object.entries(carbonInfo.emissions).forEach((key) => {
         //     console.log(key)
         //     console.log(hihgValues.includes(key))
         //     if(hihgValues){
@@ -68,20 +68,20 @@ const Suggestions = ({carbonTrackerCollection}) => {
     const highEmissionsDisplay  = highEmissions.map((name, index) => <List.Item key = {index} > <CloseCircleFilled style={{color: 'red'}} /> {name} </List.Item>) 
 
     const highEmissionSolutions = highEmissions.map((name, index) => <List.Item key={index}> <PlusCircleFilled style={{color: 'red'}} /> {recommendationsForEmisions[name]} </List.Item>)
-    const lowEmissionMsg = (carbonTrackerCollection.totalEmissions > emissionsUKAvg && lowEmissions.length<=2) ? congratsSentence.max : 
-        (carbonTrackerCollection.totalEmissions > emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.aboveAVG:
-        (carbonTrackerCollection.totalEmissions <= emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.underAVG : congratsSentence.low
+    const lowEmissionMsg = (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=2) ? congratsSentence.max : 
+        (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.aboveAVG:
+        (carbonInfo.totalEmissions <= emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.underAVG : congratsSentence.low
 
     return (
         <Space>
             
-            <Collapse style={{ height: '100%', backgroundColor: 'green'}}>
-                <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300, height: 300}}> <List> {lowEmissionsDisplay}</List> </Card>}>
+            <Collapse style={{width: 400, height: 'auto', backgroundColor: 'green'}}>
+                <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300}}> <List> {lowEmissionsDisplay}</List> </Card>}>
                     <p>{lowEmissionMsg}</p>
                 </Collapse.Panel>
             </Collapse>
-            <Collapse style={{ backgroundColor: 'red'}}>
-                <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300, height: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
+            <Collapse style={{width: 400, height: 'auto', backgroundColor: 'red'}}>
+                <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
                     <List>
                         {highEmissionSolutions}
                     </List>  
