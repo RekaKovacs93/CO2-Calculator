@@ -16,6 +16,7 @@ import DisplayInfo from "../components/DisplayInfo";
 import LineChart from "../components/LineChart";
 import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
+import HomePage from "../components/HomePage";
 
 
 function Container() {
@@ -40,7 +41,7 @@ function Container() {
       <h1>We have to name this APP</h1>
       <Navbar/>
       <Routes>
-        <Route path="/" element=""/>
+        <Route path="/" element={<HomePage EmissionValues={carbonTrackerCollection }/>}/>
         <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
         <Route path="/overview" element=""/>
