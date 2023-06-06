@@ -35,7 +35,7 @@ const DisplayInfo = () =>{
         <>
             {carbonInfo? <div>
             {/* <UpdateForm   addTrackingData={updateLocalData} carbonInfo={carbonInfo}/> */}
-            <DoughnutChart carbonTrackerCollection={carbonInfo}/>
+            <DoughnutChart EmissionValues={carbonInfo.emissions}  TotalEmission = {carbonInfo.totalEmissions}/>
             <BarChartComp carbonTrackerCollection={carbonInfo}/>
             <Suggestions carbonInfo={carbonInfo}/>
             </div>: null} 

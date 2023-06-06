@@ -21,7 +21,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
         })
     }
     const handleClick = () => {
-      navigate(`/update/${id.$oid}`)
+      navigate(`/update/${id}`)
       console.log(emission._id)
     }
 
