@@ -1,8 +1,10 @@
-/* .charts{
-  /* display: flex;
-  justify-content: center;
-  gap: 20px
-} */
+.cards{
+  display: flex;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+
 /* .chart-container{
   width: 400px;
   text-align: center;
