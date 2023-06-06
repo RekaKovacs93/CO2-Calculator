@@ -18,6 +18,8 @@ import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
 import Overview from "../components/Overview";
 import HomePage from "../components/HomePage";
+import AppFooter from "../components/AppFooter";
+import Resources from "../components/Resources";
 
 
 function Container() {
@@ -40,7 +42,6 @@ function Container() {
   return (
 
     <Router>
-      <h1>We have to name this APP</h1>
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage EmissionValues={carbonTrackerCollection }/>}/>
@@ -48,8 +49,10 @@ function Container() {
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
+        <Route path="/resources" element={<Resources/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
+      <AppFooter/>
     </Router>
       // {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       
