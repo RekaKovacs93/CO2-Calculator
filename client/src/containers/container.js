@@ -22,10 +22,12 @@ import Overview from "../components/Overview";
 function Container() {
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
+  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
   // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   console.log(carbonTrackerCollection)
   const addTrackingData = (data) => {
+    setCarbonTrackerCollection([...carbonTrackerCollection, data])
     setCarbonTrackerCollection([...carbonTrackerCollection, data])
   }
 
