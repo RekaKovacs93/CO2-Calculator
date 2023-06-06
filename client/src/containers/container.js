@@ -50,9 +50,9 @@ function Container() {
       </Routes>
       
       
-      <Navbar/>
       
-      <MetersForm addTrackingData = {addTrackingData}/>
+      
+      
 
       {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       
