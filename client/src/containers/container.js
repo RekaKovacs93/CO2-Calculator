@@ -16,16 +16,17 @@ import DisplayInfo from "../components/DisplayInfo";
 import LineChart from "../components/LineChart";
 import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
+import Overview from "../components/Overview";
 
 
 function Container() {
   
-  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState(null)
+  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
   // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   console.log(carbonTrackerCollection)
   const addTrackingData = (data) => {
-    setCarbonTrackerCollection(data)
+    setCarbonTrackerCollection([...carbonTrackerCollection, data])
   }
 
   // useEffect (() => {
@@ -43,7 +44,7 @@ function Container() {
         <Route path="/" element=""/>
         <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
-        <Route path="/overview" element=""/>
+        <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>

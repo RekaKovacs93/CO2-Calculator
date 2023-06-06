@@ -2,7 +2,11 @@ import React from "react";
 import Chart from 'chart.js/auto';
 import { Line } from "react-chartjs-2";
 
-const LineChart = () => {
+const LineChart = ({carbonTrackerCollection}) => {
+  
+  const lineData = carbonTrackerCollection.map((document) => {
+    return document.totalEmissions
+  })
 
 // const labels = carbonTrackerCollection.emissions.map(())
 
@@ -12,7 +16,7 @@ const data = {
   datasets: [{
     label: 'My First Dataset',
     // data: lastTwelveItems.map(item => item.value),
-    data: [ 1000, 8272, 8256, 2297,1000, 8272, 8256, 2297,1000, 8272, 8256, 2297,],
+    data: lineData,
     fill: false,
     borderColor: 'rgb(75, 192, 192)',
     tension: 0.1
