@@ -21,7 +21,57 @@ import Overview from "../components/Overview";
 
 function Container() {
   
-  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([])
+  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([
+    {
+      "_id": "647c86c3ec969562398325bf",
+      "entries": {
+        "electricBill": "455",
+        "gasBill": "",
+        "oilBill": "",
+        "carMileage": "",
+        "flightUnder": "",
+        "flightOver": "",
+        "recyclePaper": false,
+        "recycleAluminium": false
+      },
+      "emissions": {
+        "electricBill": 47775,
+        "gasBill": 0,
+        "oilBill": 0,
+        "carMileage": 0,
+        "flightUnder": 0,
+        "flightOver": 0,
+        "recyclePaper": 184,
+        "recycleAluminium": 166
+      },
+      "totalEmissions": 48125
+    },
+    {
+      "_id": "647f28d7a9e96bcd0aaadf96",
+      "entries": {
+        "monthsSubmition": "2023-02-06T13:38:30.065Z",
+        "electricBill": 36,
+        "gasBill": 37,
+        "oilBill": 0,
+        "carMileage": 0,
+        "flightUnder": 32,
+        "flightOver": 0,
+        "recyclePaper": false,
+        "recycleAluminium": false
+      },
+      "emissions": {
+        "electricBill": 3780,
+        "gasBill": 3885,
+        "oilBill": 0,
+        "carMileage": 0,
+        "flightUnder": 35200,
+        "flightOver": 0,
+        "recyclePaper": 184,
+        "recycleAluminium": 166
+      },
+      "totalEmissions": 43215
+    }
+  ])
   // const [lastTwelveItems, setLastTwelveItems] = useState([])
   
   console.log(carbonTrackerCollection)
@@ -45,7 +95,7 @@ function Container() {
         <Route path="/" element=""/>
         <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
-        <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection}/>}/>
+        <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
