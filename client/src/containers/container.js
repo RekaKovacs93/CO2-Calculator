@@ -18,12 +18,67 @@ import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
 import Overview from "../components/Overview";
 import HomePage from "../components/HomePage";
+import HomePage from "../components/HomePage";
 
 
 function Container() {
   const months = [  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   const years = [2016, 2017, 2018, 2019, 2016, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]
+  const months = [  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const years = [2016, 2017, 2018, 2019, 2016, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]
   
+  const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([
+  {
+    "_id": "647f1eb0a4d27a4c3c69e705",
+    "entries": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 560,
+    "flightOver": 10,
+    "recyclePaper": true,
+    "recycleAluminium": true
+    },
+    "emissions": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 616000,
+    "flightOver": 44000,
+    "recyclePaper": 0,
+    "recycleAluminium": 0
+    },
+    "totalEmissions": 660000
+  },
+  {
+    "_id": "647f1e40a4d27a4c3c69e704",
+    "entries": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 0,
+    "flightOver": 0,
+    "recyclePaper": false,
+    "recycleAluminium": false
+    },
+    "emissions": {
+    "electricBill": 0,
+    "gasBill": 0,
+    "oilBill": 0,
+    "carMileage": 0,
+    "flightUnder": 0,
+    "flightOver": 0,
+    "recyclePaper": 184,
+    "recycleAluminium": 166
+    },
+    "totalEmissions": 350
+    }
+
+  ])
+  const [monthsOfTheYear, setMonthsOfTheYear] = useState([])
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([
   {
     "_id": "647f1eb0a4d27a4c3c69e705",
@@ -82,6 +137,37 @@ function Container() {
   const addTrackingData = (data) => {
     setCarbonTrackerCollection([...carbonTrackerCollection, data])
 
+
+  }
+
+  useEffect (() => {
+    // getTwelve().then((data) => {
+    //   setLastTwelveItems(data)
+    // })
+    getMonthsAndYears()
+  }, [])
+  const getMonthsAndYears = () =>{
+    const allMonthsAndYears = years.map((year) => {
+      console.log(year)
+      const yearObj = {}
+      yearObj[year] = months
+      return yearObj
+      // return yearObj[`${year}`] = months
+    })
+    setMonthsOfTheYear(allMonthsAndYears)
+    console.log(monthsOfTheYear)
+  }
+  console.log(monthsOfTheYear)
+  
+
+  const updateTrackingData = (data, oldData) =>{
+  
+    const index = carbonTrackerCollection.map(elm => elm._id).indexOf(oldData._id)
+    const collectionLocal = carbonTrackerCollection
+    collectionLocal[index] = data
+    setCarbonTrackerCollection(collectionLocal)
+    console.log(carbonTrackerCollection)
+    console.log(index)
   }
 
   useEffect (() => {
@@ -127,6 +213,7 @@ function Container() {
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
+        <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
       
@@ -143,16 +230,22 @@ function Container() {
       {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
       {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
-    </Router>
-      // {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       
-  //     {/* {carbonTrackerCollection ? <Suggestions carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
-  //     {/* {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
-  //     {/* {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
-  //     {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
-  //     {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
-  //     {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
-  // );
+      
+      {/* <Navbar/> */}
+      
+      {/* <MetersForm addTrackingData = {addTrackingData}/> */}
+
+      {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      
+      {/* {carbonTrackerCollection ? <Suggestions carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
+      {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
+    </Router>
+
   )
 }
 
