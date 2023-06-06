@@ -18,6 +18,7 @@ import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
 import Overview from "../components/Overview";
 import HomePage from "../components/HomePage";
+import HomePage from "../components/HomePage";
 
 
 function Container() {
@@ -82,7 +83,9 @@ function Container() {
   const addTrackingData = (data) => {
     setCarbonTrackerCollection([...carbonTrackerCollection, data])
 
+
   }
+
 
   useEffect (() => {
     // getTwelve().then((data) => {
@@ -121,14 +124,29 @@ function Container() {
       <h1>We have to name this APP</h1>
       <Navbar/>
       <Routes>
-        <Route path="/" element=""/>
-        <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData} monthsOfTheYear ={monthsOfTheYear}/>}/>
+        <Route path="/" element={<HomePage EmissionValues={carbonTrackerCollection }/>}/>
+        <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
-        <Route path="/overview" element={<EmissionsGrid EmissionValues ={carbonTrackerCollection}/>}/>
+        <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
+        <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
+      
+      
+      {/* <Navbar/> */}
+      
+      {/* <MetersForm addTrackingData = {addTrackingData}/> */}
+
+      {/* {carbonTrackerCollection ? <DoughnutChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      
+      {/* {carbonTrackerCollection ? <Suggestions carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <LineChart carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
+      {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
+      {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
       
       
       {/* <Navbar/> */}
