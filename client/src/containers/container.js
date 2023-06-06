@@ -18,6 +18,8 @@ import EmissionsCard from "../components/EmissionsCard"
 import EmissionsGrid from "../components/EmissionsGrid";
 import Overview from "../components/Overview";
 import HomePage from "../components/HomePage";
+import AppFooter from "../components/AppFooter";
+import Resources from "../components/Resources";
 
 
 function Container() {
@@ -120,7 +122,6 @@ function Container() {
   return (
 
     <Router>
-      <h1>We have to name this APP</h1>
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage EmissionValues={carbonTrackerCollection }/>}/>
@@ -129,7 +130,7 @@ function Container() {
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
-        <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
+        <Route path="/resources" element={<Resources/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
       
@@ -160,6 +161,7 @@ function Container() {
       {/* {carbonTrackerCollection ? <EmissionsCard carbonTrackerCollection={carbonTrackerCollection}/>: null} */}
       {/* {carbonTrackerCollection ? <EmissionsGrid EmissionValues={carbonTrackerCollection}/>: null}  */}
       {/* <EmissionsGrid emissions={emissions} removeBooking={removeBooking} checkIn={checkIn}/> */}
+      <AppFooter/>
     </Router>
 
   )
