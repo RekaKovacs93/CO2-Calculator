@@ -40,7 +40,6 @@ const UpdateForm = ({updateTrackingData}) => {
         getOneTracker(id)
         .then(data=>{
             setCarbonInfo(data)
-            console.log(data)
             setFormData(data.entries)
             const formFeildsObj = {...data.date, ...data.entries}
             form.setFieldsValue(formFeildsObj)
@@ -74,7 +73,6 @@ const UpdateForm = ({updateTrackingData}) => {
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (values) =>{
         // event.preventDefault()
-        console.log({values})
         const newCarbonData = {
             electricBill: formData.electricBill * 105,
             gasBill: formData.gasBill * 105,

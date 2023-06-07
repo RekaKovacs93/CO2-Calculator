@@ -87,13 +87,14 @@ function Container() {
   }
 
   const updateMonthsAndYears = (date) =>{
-    const copyOfMonths = monthsOfTheYear
-    console.log(copyOfMonths)
+    const copyOfMonths =[...monthsOfTheYear]
     const yearkeys = copyOfMonths.map((year) => Object.keys(year)[0])
     const yearIndex = yearkeys.indexOf(date.year)
     const monthIndex = copyOfMonths[yearIndex][date.year].indexOf(date.month)
     if (monthIndex >-1){
-      copyOfMonths[yearIndex][date.year].splice(monthIndex, 1)
+      const spliceListOfMonths =  [... copyOfMonths[yearIndex][date.year]]
+      spliceListOfMonths.splice(monthIndex, 1)
+      copyOfMonths[yearIndex][date.year] = spliceListOfMonths
     }
     setMonthsOfTheYear(copyOfMonths)
   }

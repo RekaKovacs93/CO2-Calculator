@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { deleteTracker } from "../service/TrackerSevice"
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card, Skeleton, Switch } from 'antd';
+import { Avatar, Card, Skeleton, Switch} from 'antd';
 import { Doughnut } from "react-chartjs-2";
 import DoughnutChart from "./chart_component";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 
 
 const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission, id})=> { 
@@ -26,7 +26,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
     }
 
     return (
-        <>
+        <Link to={`/display/${id}`} style={{textDecoration: 'none'}}>
         <Card
         style={{
           width: 300,
@@ -52,13 +52,14 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
              
             
             {/* <label>Delete Emission </label> */}
+
             <h3>This month</h3>
             <DoughnutChart EmissionValues={EmissionValues}  TotalEmission = {TotalEmission}/>
             
             {/* <button onClick={handleDelete} value={emission._id}>Delete Emission</button> */}
       </Card>
             
-        </>
+        </Link>
     )
 }
 

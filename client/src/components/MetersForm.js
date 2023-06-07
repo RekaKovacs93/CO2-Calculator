@@ -78,7 +78,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
         postTracker(newData)
         .then((data) => {handleData(data)
         console.log(data)} )
-        setSubmitedData(initialObj)
+        // setSubmitedData(initialObj)
         form.resetFields()
        
     }
