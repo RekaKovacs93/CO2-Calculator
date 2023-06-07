@@ -89,6 +89,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
         
     }
     const handleYearChange = (value)=>{
+        console.log(value)
         const findYear = monthsOfTheYear.filter((year) => Object.keys(year)[0] === value)
         console.log(Object.values(findYear[0]))
         setChoosenYear(Object.values(findYear[0])[0])
@@ -96,7 +97,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
 
     return (
         <Form initialValues={submitedData} form={form} onFinish={handleSubmit} onValuesChange={handleOnChange}>
-                <Form.Item name = "year" label = "Choose The Month">
+                <Form.Item name = "year" label = "Choose The Year">
                     <Select onChange={handleYearChange} options={monthsOfTheYear.map((yearObj) =>(
                         {
                             label: Object.keys(yearObj)[0],

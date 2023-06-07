@@ -7,16 +7,16 @@ import { useParams, useNavigate} from 'react-router-dom'
 import { getOneTracker } from "../service/TrackerSevice";
 
 const UpdateForm = ({updateTrackingData}) => {
-    // const initialObj = {
-    //     "electricBill": 0,
-    //     "gasBill": 0,
-    //     "oilBill": 0,
-    //     "carMileage": 0,
-    //     "flightUnder": 0,
-    //     "flightOver": 0,
-    //     "recyclePaper": false,
-    //     "recycleAluminium": false
-    // }
+    const initialObj = {
+        "electricBill": 0,
+        "gasBill": 0,
+        "oilBill": 0,
+        "carMileage": 0,
+        "flightUnder": 0,
+        "flightOver": 0,
+        "recyclePaper": false,
+        "recycleAluminium": false
+     }
     
     const {id} = useParams()
     const navigate = useNavigate()
@@ -40,6 +40,7 @@ const UpdateForm = ({updateTrackingData}) => {
         getOneTracker(id)
         .then(data=>{
             setCarbonInfo(data)
+            console.log(data)
             setFormData(data.entries)
             const formFeildsObj = {...data.date, ...data.entries}
             form.setFieldsValue(formFeildsObj)

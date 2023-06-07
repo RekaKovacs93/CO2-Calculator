@@ -88,6 +88,7 @@ function Container() {
 
   const updateMonthsAndYears = (date) =>{
     const copyOfMonths = monthsOfTheYear
+    console.log(copyOfMonths)
     const yearkeys = copyOfMonths.map((year) => Object.keys(year)[0])
     const yearIndex = yearkeys.indexOf(date.year)
     const monthIndex = copyOfMonths[yearIndex][date.year].indexOf(date.month)
@@ -135,7 +136,7 @@ function Container() {
         <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData} monthsOfTheYear={monthsOfTheYear}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
-        <Route path="/display/:id" element={<DisplayInfo/>}/>
+        <Route path="/display/:id" element={<DisplayInfo EmissionValues={carbonTrackerCollection }/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         <Route path="/resources" element={<Resources/>}/>
         <Route path="*" element={<ErrorPage/>}/>
