@@ -5,6 +5,7 @@ import LineChart from "./LineChart";
 import BarChartComp from "./BarChart_component";
 import EmissionsCard from "./EmissionsCard";
 import EmissionsGrid from "./EmissionsGrid";
+import AppFooter from "./AppFooter";
 
 const Overview = ({carbonTrackerCollection, EmissionValues}) => {
     return (
@@ -13,6 +14,7 @@ const Overview = ({carbonTrackerCollection, EmissionValues}) => {
         <LineChart carbonTrackerCollection={carbonTrackerCollection}/>
         <EmissionsGrid EmissionValues={EmissionValues} carbonTrackerCollection={carbonTrackerCollection} />
         {/* <BarChartComp carbonTrackerCollection={carbonTrackerCollection}/> */}
+        <AppFooter/>
         </>
         
     )
