@@ -1,7 +1,7 @@
 .footer-container {
   display: flex;
   justify-content: space-between;
-  background-color: lightgrey;
+  background-color:rgb(180, 205, 190);
   padding: 10px;
   width: 100%;
 }
@@ -39,18 +39,10 @@ body {
   height: 100%;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
 footer {
   margin-top: auto;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.footer-image {
+  width:500px;
 }
