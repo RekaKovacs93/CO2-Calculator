@@ -50,6 +50,9 @@ const DisplayInfo = () =>{
          ctx.save();
     } 
   }]
+  const handleEditButton = () =>{
+    navigate(`/update/${id}`)
+  }
 
 
     return(
@@ -68,7 +71,7 @@ const DisplayInfo = () =>{
             marginTop: 16,
             }}
             actions={[
-          <EditOutlined key="edit" />
+          <EditOutlined key="edit" onClick={handleEditButton}/>
         ]}>
         <div className="displaycard"><h2>{carbonInfo.date.month} {carbonInfo.date.year}</h2>
         <hr></hr>
