@@ -7,33 +7,18 @@ import { useParams, useNavigate} from 'react-router-dom'
 import { getOneTracker } from "../service/TrackerSevice";
 
 const UpdateForm = ({updateTrackingData}) => {
-    const initialObj = {
-        "electricBill": 0,
-        "gasBill": 0,
-        "oilBill": 0,
-        "carMileage": 0,
-        "flightUnder": 0,
-        "flightOver": 0,
-        "recyclePaper": false,
-        "recycleAluminium": false
-     }
+
     
     const {id} = useParams()
     const navigate = useNavigate()
     const [form] = Form.useForm()
     const [carbonInfo, setCarbonInfo] = useState(null)
     const [formData, setFormData] = useState(null)
-    // const initDate = `${carbonInfo.entries.monthsSubmition}`
+   
 
     useEffect(() =>{
         getInfoFormDB()
     },[]) 
-    // useEffect(() =>{
-    //     console.log("heyyyyyy", {carbonInfo})
-    //     setInitialValues()
-    // },[formData]) 
-
-  
 
     const getInfoFormDB = () =>{
         
@@ -42,21 +27,10 @@ const UpdateForm = ({updateTrackingData}) => {
             setCarbonInfo(data)
             setFormData(data.entries)
             const formFeildsObj = {...data.date, ...data.entries}
-            form.setFieldsValue(formFeildsObj)
-
-            
+            form.setFieldsValue(formFeildsObj)   
         })
-
-        // .then(data =>{setFormData(data)} )
-        // console.log(carbonInfo)
-        // setFormData(carbonInfo.entries)
     }
-    // const setInitialValues = () =>{
-    //     console.log({carbonInfo})
-    //     const formFieldsObj = {...carbonInfo.date, ...formData}
-    //     form.setFieldsValue(formFieldsObj)
-    // }
-    
+
     if (!formData && !carbonInfo) {
         return
     }
@@ -72,7 +46,7 @@ const UpdateForm = ({updateTrackingData}) => {
 
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (values) =>{
-        // event.preventDefault()
+        
         const newCarbonData = {
             electricBill: formData.electricBill * 105,
             gasBill: formData.gasBill * 105,

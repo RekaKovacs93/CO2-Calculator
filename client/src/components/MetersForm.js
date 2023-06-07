@@ -28,12 +28,10 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
         if (Object.keys(changedValue)[0] === 'year' || Object.keys(changedValue)[0] === 'month'){
             const tempdate = Object.assign({},date)
             tempdate[Object.keys(changedValue)[0]] = Object.values(changedValue)[0] 
-            console.log(tempdate)
             setDate(tempdate)
         }else{
             delete allValues.year
             delete allValues.month
-            console.log({allValues})
             setSubmitedData(allValues)
         }
        
@@ -41,8 +39,6 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
 
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
-        // event.preventDefault()
-         console.log(submitedData)
         const newCarbonData = {
             electricBill: parseFloat(submitedData.electricBill) * 105,
             gasBill: parseFloat(submitedData.gasBill) * 105,
@@ -53,7 +49,6 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
             recyclePaper: (submitedData.recyclePaper? 0 : 184),
             recycleAluminium: (submitedData.recycleAluminium? 0 : 166)
         }
-        console.log("emision data", newCarbonData)
         const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
         const newData = {
             date: date,
@@ -61,13 +56,8 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
             emissions: newCarbonData, 
             totalEmissions: newTotalEmissions
         }
-        // postTracker(submitedData)
-        // .then((data) => {addTrackingData(data)})
-        // setSubmitedData(initialObj)
         postTracker(newData)
-        .then((data) => {handleData(data)
-        console.log(data)} )
-        // setSubmitedData(initialObj)
+        .then((data) => {handleData(data)})
         form.resetFields()
        
     }
@@ -78,9 +68,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
         
     }
     const handleYearChange = (value)=>{
-        console.log(value)
         const findYear = monthsOfTheYear.filter((year) => Object.keys(year)[0] === value)
-        console.log(Object.values(findYear[0]))
         setChoosenYear(Object.values(findYear[0])[0])
     }
 
@@ -147,27 +135,3 @@ export default MetersForm
 
 
 
-
-{/* <div>
-<label htmlFor = "electric" >Electric Bill</label>
-<input onChange = {handleOnChange} type = 'number' value = {submitedData.electricBill}  id = "electric" name = "electricBill" style={{width: sizeInput}}/>
-<label htmlFor = "gas" >Gas Bill</label>
-<input type = "number" value = {submitedData.gasBill} onChange = {handleOnChange} id = "gas" name="gasBill" style={{width: sizeInput}}/>
-<label htmlFor = "oil">Oil Bill</label>
-<input type = "number" value = {submitedData.oilBill} onChange = {handleOnChange} id = "oil" name="oilBill" style={{width: sizeInput}}/>
-</div>
-<div>
-<label htmlFor = "mileage">Mileage of Your Car</label>
-<input type = "number" value = {submitedData.carMileage} onChange = {handleOnChange} id = "mileage" name="carMileage" style={{width: sizeInput}}/>
-<label htmlFor = "flightUnder" >Number of Flights(less than 4 hours)</label>
-<input type = "number" value = {submitedData.flightUnder} onChange = {handleOnChange} id = "flightUnder" name="flightUnder" style={{width: sizeInput}}/>
-<label htmlFor = "flightOver" >Number of Flights(more than 4 hours)</label>
-<input type = "number" value = {submitedData.flightOver} onChange = {handleOnChange} id = "flightOver" name="flightOver" style={{width: sizeInput}}/>
-</div>
-<div>
-<label htmlFor = "newspaper">Recycle Newspaper</label>
-<input type = "checkbox" id = "newspaper" onChange = {handleOnChangeCheckbox} value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} name="recyclePaper" />
-<label htmlFor = "tin" >Recycle Aluminum and Tin</label>
-<input type = "checkbox" id = "tin" onChange = {handleOnChangeCheckbox} value = {submitedData.recycleAluminium} checked = {submitedData.recycleAluminium} name="recycleAluminium" />
-</div>
-<input type = "submit" value = "Submit" /> */}
