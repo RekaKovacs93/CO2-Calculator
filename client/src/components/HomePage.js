@@ -1,6 +1,7 @@
 import EmissionsGrid from "../components/EmissionsGrid";
 import EmissionsCard from "./EmissionsCard"
 import { Link } from 'react-router-dom'
+import AppFooter from "./AppFooter";
 
 
 
@@ -19,6 +20,7 @@ const HomePage = ({emission, removeEmission, EmissionValues}) => {
     <Link to='/overview'>
       <button>See more information</button>
     </Link>
+    <AppFooter/>
     </>
   )
 }
