@@ -1,7 +1,8 @@
 .cards{
   display: flex;
   gap: 20px;
-  margin-top: 50px;
+  margin: 50px;
+
 }
 
 
@@ -10,8 +11,19 @@
   text-align: center;
 } */ 
 body{
-  margin: 10px 20px; 
+  margin: 10px 0; 
   background-color: rgb(243, 243, 243);
+  text-align: center;
+  color: rgb(70, 70, 70);
+}
+.hero{
+  /* background-image: url('./forest-g3847e3ae7_1280.jpeg'); */
+  /* background-color: #cccccc; */
+  margin: 50px;
+}
+.recents{
+  text-align: left;
+  margin-left: 50px
 }
 header{
   margin-bottom: 20px
@@ -27,4 +39,16 @@ header{
 }
 .switch, .input, .inputsmall{
   margin-right: 30px;
+}
+
+.doughcont{
+  width: 500px;
+  
+}
+
+.displaycont{
+  display: flex;
+  gap: 50px;
+  margin: 30px;
+  justify-content: space-between;
 }
