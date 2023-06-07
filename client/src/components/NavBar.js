@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
-// import "../Quebab.svg"
+import logo from "../Quebab.svg" 
 
 const { Header } = Layout;
 
@@ -12,7 +12,7 @@ const NavBar = () => {
   return (
     <Layout className="layout">
       <Header style={{ display: 'flex', justifyContent: 'space-between', background: "rgb(50, 94, 58)" }}>
-      <img src="./Quebab.svg"/>
+      <img src={logo}/>
         <Menu theme="dark" mode="horizontal" selectedKeys={[location.pathname]} style = {{background: "rgb(50, 94, 58)"}}>
           <Menu.Item key="/" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>

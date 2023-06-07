@@ -90,6 +90,7 @@ const DisplayInfo = () =>{
             <h3>Total emissions:</h3><h1>{carbonInfo.totalEmissions}</h1> */}
             </Card>
         </div>
+        <h1>Your score vs UK average</h1>
             <BarChartComp carbonTrackerCollection={carbonInfo}/>
             <div className = "suggestions">
             <Suggestions carbonInfo={carbonInfo}/>
