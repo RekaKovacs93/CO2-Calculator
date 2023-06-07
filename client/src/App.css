@@ -5,6 +5,12 @@
 
 }
 
+img{
+  position: relative;
+  left: -200px
+
+}
+
 
 /* .chart-container{
   width: 400px;
@@ -26,7 +32,8 @@ body{
   margin-left: 50px
 }
 header{
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  position: relative;
 }
 .input{
   width: 100px;
@@ -79,7 +86,7 @@ header{
 
 
 }
-.linechart > h1{
+h1{
   margin: 50px 0
 }
 
