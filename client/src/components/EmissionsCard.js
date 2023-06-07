@@ -5,6 +5,7 @@ import { Avatar, Card, Skeleton, Switch} from 'antd';
 import { Doughnut } from "react-chartjs-2";
 import DoughnutChart from "./chart_component";
 import {useNavigate, Link} from 'react-router-dom'
+import { Color } from "@rc-component/color-picker";
 
 
 const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission, id})=> { 
@@ -34,7 +35,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
         actions={
         [<EditOutlined key="edit" onClick={handleClick} />]
         }>
-            <Link to={`/display/${id}`} style={{textDecoration: 'none'}}>
+            <Link className = "cardname" to={`/display/${id}`} style={{textDecoration: 'none'}}>
                 <h3>{emission.date.month}  {emission.date.year}</h3>
                 <DoughnutChart EmissionValues={EmissionValues}  TotalEmission = {TotalEmission}/>
             </Link>

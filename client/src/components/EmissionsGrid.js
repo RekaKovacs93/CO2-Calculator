@@ -8,6 +8,7 @@ const EmissionsGrid = ({EmissionValues})=> {
 
     return (
         <div className="cards">
+        
             {allEmissions}
         </div>
     )
