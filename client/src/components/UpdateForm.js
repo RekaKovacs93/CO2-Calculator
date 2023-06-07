@@ -80,45 +80,46 @@ const UpdateForm = ({updateTrackingData}) => {
         <Form  form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
         
             <Space direction="horizontal">
-            <Form.Item name = 'year'>
-            <Statistic   groupSeparator=""/>
-            </Form.Item>
             <Form.Item name = 'month'>
                 <Statistic  />
             </Form.Item>
+            <Form.Item name = 'year'>
+            <Statistic   groupSeparator=""/>
+            </Form.Item>
+
             </Space>
             <div className="formflex">
             <Form.Item label="Electric Bill" name="electricBill">
-                <InputNumber addonAfter="£" min={0} max={9999999}/>
+                <InputNumber className = "input" addonAfter="£" min={0} max={9999999}/>
             </Form.Item>
             <Form.Item label="Gas Bill" name="gasBill">
-                <InputNumber addonAfter = "£" min={0} max={9999999}/>
+                <InputNumber className = "input" addonAfter = "£" min={0} max={9999999}/>
             </Form.Item>
             <Form.Item label="Oil Bill" name="oilBill">
-                <InputNumber addonAfter = "£" min={0} max={9999999}/>
+                <InputNumber className = "input" addonAfter = "£" min={0} max={9999999}/>
             </Form.Item>
             </div>
             <div className="formflex">
             <Form.Item label="Mileage of Your Car" name="carMileage">
-                <InputNumber addonAfter = "mi" min={0} max={9999999} />
+                <InputNumber className = "input" addonAfter = "mi" min={0} max={9999999} />
             </Form.Item>
             <Form.Item label="Number of Flights(less than 4 hours)"  name="flightUnder">
-                <InputNumber min={0}  max={9999999}/>
+                <InputNumber className = "inputsmall" min={0}  max={9999999}/>
             </Form.Item>
             <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver">
-                <InputNumber min={0}  max={9999999} />
+                <InputNumber className = "inputsmall" min={0}  max={9999999} />
             </Form.Item>
             </div>
             <div className="formflex">
             <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
-                <Switch  checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />} />
+                <Switch className="switch" style ={{background: "rgb(100, 165, 108)"}} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />} />
             </Form.Item>
             <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
-                <Switch checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
+                <Switch className="switch" style ={{background: "rgb(100, 165, 108)"}} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
             </Form.Item>
             </div>
             <Form.Item>
-                <Button className = "button" htmlType="submit">Update</Button>
+                <Button className = "button" style = {{background: "rgb(100, 165, 108)"}} htmlType="submit">Update</Button>
             </Form.Item>
         </Form>
     );

@@ -13,7 +13,7 @@ const DisplayInfo = () =>{
     const {id} = useParams()
     const  navigate = useNavigate()
     const [carbonInfo, setCarbonInfo] = useState(null)
-  
+
 
     const updateCarbonData = (data) => {
         setCarbonInfo(data)
@@ -32,6 +32,9 @@ const DisplayInfo = () =>{
    const updateLocalData = (data) =>{
     setCarbonInfo(data);
    }
+   const handleClick = () => {
+    navigate(`/update/${id}`)
+  }
 
    const plugins = [{
     beforeDraw: function(chart) {
@@ -68,7 +71,7 @@ const DisplayInfo = () =>{
             marginTop: 16,
             }}
             actions={[
-          <EditOutlined key="edit" />
+          <EditOutlined key="edit" onClick={handleClick}/>
         ]}>
         <div className="displaycard"><h2>{carbonInfo.date.month} {carbonInfo.date.year}</h2>
         <hr></hr>
