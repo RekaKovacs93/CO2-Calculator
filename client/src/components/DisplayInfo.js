@@ -55,6 +55,8 @@ const DisplayInfo = () =>{
 
     return(
         <>
+            <h1>Your monthly CO2 Footprint</h1>
+
             {carbonInfo? <div>
             {/* <UpdateForm   addTrackingData={updateLocalData} carbonInfo={carbonInfo}/> */}
             <div className = "displaycont">
@@ -73,19 +75,25 @@ const DisplayInfo = () =>{
 
           />
         ]}>
-            <p><b>Electric:</b>{carbonInfo.emissions.electricBill}</p>  
-            <p><b>Gas:</b> {carbonInfo.emissions.gasBill}</p>  
-            <p><b>Oil:</b>{carbonInfo.emissions.oilBill}</p>  
-            <p><b>Flight Under 4 Hours:</b>{carbonInfo.emissions.flightUnder}</p>  
-            <p><b>Flight Over 4 Hours:</b>{carbonInfo.emissions.flightOver}</p>  
-            <p><b>Recycle Paper:</b>{carbonInfo.emissions.recyclePaper}</p>  
-            <p><b>Recycle Aluminium:</b>{carbonInfo.emissions.recycleAluminium}</p>
+        <div className="displaycard"><h2>{carbonInfo.date.month} {carbonInfo.date.year}</h2>
+        <hr></hr>
+            <p><b>Electric:</b>{carbonInfo.entries.electricBill}</p>  
+            <p><b>Gas:</b> {carbonInfo.entries.gasBill}</p>  
+            <p><b>Oil:</b>{carbonInfo.entries.oilBill}</p>  
+            <p><b>Car:</b>{carbonInfo.entries.carMileage}</p>
+            <p><b>Flight Under 4 Hours:</b>{carbonInfo.entries.flightUnder}</p>  
+            <p><b>Flight Over 4 Hours:</b>{carbonInfo.entries.flightOver}</p>  
+            <p><b>Recycle Paper:</b>{carbonInfo.entries.recyclePaper}</p>  
+            <p><b>Recycle Aluminium:</b>{carbonInfo.entries.recycleAluminium}</p>
+            </div>
             {/* <hr></hr>
             <h3>Total emissions:</h3><h1>{carbonInfo.totalEmissions}</h1> */}
             </Card>
         </div>
             <BarChartComp carbonTrackerCollection={carbonInfo}/>
+            <div className = "suggestions">
             <Suggestions carbonInfo={carbonInfo}/>
+            </div>
             </div>: null} 
         </>
 
