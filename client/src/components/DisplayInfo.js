@@ -26,8 +26,7 @@ const DisplayInfo = () =>{
     const getFormDB = () =>{
         
         getOneTracker(id)
-            .then(data=>{setCarbonInfo(data)
-            console.log('data to display',data)})
+            .then(data=>{setCarbonInfo(data)})
         
     }
    const updateLocalData = (data) =>{

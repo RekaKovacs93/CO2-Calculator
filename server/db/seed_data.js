@@ -2,7 +2,7 @@ use CO2_trackings;
 db.dropDatabase();
 
 db.trackings.insertMany([
-    {"date": {
+{"date": {
         "year": "2016",
         "month": "January"
         },
@@ -324,6 +324,493 @@ db.trackings.insertMany([
                                                     "recycleAluminium": 0
                                                     },
                                                     "totalEmissions": 431720
-                                                    }
+                                                    },
+                                                    {
+                                                        "date": {
+                                                        "year": "2017",
+                                                        "month": "January"
+                                                        },
+                                                        "entries": {
+                                                        "electricBill": 450,
+                                                        "gasBill": 250,
+                                                        "oilBill": 200,
+                                                        "carMileage": 1200,
+                                                        "flightUnder": 1,
+                                                        "flightOver": 0,
+                                                        "recyclePaper": true,
+                                                        "recycleAluminium": true
+                                                        },
+                                                        "emissions": {
+                                                        "electricBill": 47250,
+                                                        "gasBill": 26250,
+                                                        "oilBill": 22600,
+                                                        "carMileage": 948,
+                                                        "flightUnder": 1100,
+                                                        "flightOver": 0,
+                                                        "recyclePaper": 0,
+                                                        "recycleAluminium": 0
+                                                        },
+                                                        "totalEmissions": 98148
+                                                        },
+                                                        {
+                                                            "date": {
+                                                            "year": "2017",
+                                                            "month": "February"
+                                                            },
+                                                            "entries": {
+                                                            "electricBill": 470,
+                                                            "gasBill": 500,
+                                                            "oilBill": 340,
+                                                            "carMileage": 1800,
+                                                            "flightUnder": 1,
+                                                            "flightOver": 1,
+                                                            "recyclePaper": false,
+                                                            "recycleAluminium": true
+                                                            },
+                                                            "emissions": {
+                                                            "electricBill": 49350,
+                                                            "gasBill": 52500,
+                                                            "oilBill": 38420,
+                                                            "carMileage": 1422,
+                                                            "flightUnder": 1100,
+                                                            "flightOver": 4400,
+                                                            "recyclePaper": 184,
+                                                            "recycleAluminium": 0
+                                                            },
+                                                            "totalEmissions": 147376
+                                                            },
+                                                            {
+                                                                "date": {
+                                                                "year": "2017",
+                                                                "month": "March"
+                                                                },
+                                                                "entries": {
+                                                                "electricBill": 120,
+                                                                "gasBill": 130,
+                                                                "oilBill": 200,
+                                                                "carMileage": 800,
+                                                                "flightUnder": 0,
+                                                                "flightOver": 0,
+                                                                "recyclePaper": true,
+                                                                "recycleAluminium": true
+                                                                },
+                                                                "emissions": {
+                                                                "electricBill": 12600,
+                                                                "gasBill": 13650,
+                                                                "oilBill": 22600,
+                                                                "carMileage": 632,
+                                                                "flightUnder": 0,
+                                                                "flightOver": 0,
+                                                                "recyclePaper": 0,
+                                                                "recycleAluminium": 0
+                                                                },
+                                                                "totalEmissions": 49482
+                                                                },
+                                                                {
+                                                                    "date": {
+                                                                    "year": "2017",
+                                                                    "month": "April"
+                                                                    },
+                                                                    "entries": {
+                                                                    "electricBill": 150,
+                                                                    "gasBill": 100,
+                                                                    "oilBill": 300,
+                                                                    "carMileage": 2000,
+                                                                    "flightUnder": 0,
+                                                                    "flightOver": 1,
+                                                                    "recyclePaper": false,
+                                                                    "recycleAluminium": true
+                                                                    },
+                                                                    "emissions": {
+                                                                    "electricBill": 15750,
+                                                                    "gasBill": 10500,
+                                                                    "oilBill": 33900,
+                                                                    "carMileage": 1580,
+                                                                    "flightUnder": 0,
+                                                                    "flightOver": 4400,
+                                                                    "recyclePaper": 184,
+                                                                    "recycleAluminium": 0
+                                                                    },
+                                                                    "totalEmissions": 66314
+                                                                    },
+                                                                     {
+                                                                        "date": {
+                                                                        "year": "2017",
+                                                                        "month": "May"
+                                                                        },
+                                                                        "entries": {
+                                                                        "electricBill": 170,
+                                                                        "gasBill": 130,
+                                                                        "oilBill": 290,
+                                                                        "carMileage": 1300,
+                                                                        "flightUnder": 1,
+                                                                        "flightOver": 0,
+                                                                        "recyclePaper": false,
+                                                                        "recycleAluminium": false
+                                                                        },
+                                                                        "emissions": {
+                                                                        "electricBill": 17850,
+                                                                        "gasBill": 13650,
+                                                                        "oilBill": 32770,
+                                                                        "carMileage": 1027,
+                                                                        "flightUnder": 1100,
+                                                                        "flightOver": 0,
+                                                                        "recyclePaper": 184,
+                                                                        "recycleAluminium": 166
+                                                                        },
+                                                                        "totalEmissions": 66747
+                                                                        },
+                                                                        {
+                                                                            "date": {
+                                                                            "year": "2017",
+                                                                            "month": "June"
+                                                                            },
+                                                                            "entries": {
+                                                                            "electricBill": 120,
+                                                                            "gasBill": 130,
+                                                                            "oilBill": 250,
+                                                                            "carMileage": 800,
+                                                                            "flightUnder": 0,
+                                                                            "flightOver": 0,
+                                                                            "recyclePaper": false,
+                                                                            "recycleAluminium": false
+                                                                            },
+                                                                            "emissions": {
+                                                                            "electricBill": 12600,
+                                                                            "gasBill": 13650,
+                                                                            "oilBill": 28250,
+                                                                            "carMileage": 632,
+                                                                            "flightUnder": 0,
+                                                                            "flightOver": 0,
+                                                                            "recyclePaper": 184,
+                                                                            "recycleAluminium": 166
+                                                                            },
+                                                                            "totalEmissions": 55482
+                                                                            },
+                                                                            {
+                                                                                "date": {
+                                                                                "year": "2017",
+                                                                                "month": "July"
+                                                                                },
+                                                                                "entries": {
+                                                                                "electricBill": 170,
+                                                                                "gasBill": 80,
+                                                                                "oilBill": 220,
+                                                                                "carMileage": 1100,
+                                                                                "flightUnder": 1,
+                                                                                "flightOver": 0,
+                                                                                "recyclePaper": true,
+                                                                                "recycleAluminium": true
+                                                                                },
+                                                                                "emissions": {
+                                                                                "electricBill": 17850,
+                                                                                "gasBill": 8400,
+                                                                                "oilBill": 24860,
+                                                                                "carMileage": 869,
+                                                                                "flightUnder": 1100,
+                                                                                "flightOver": 0,
+                                                                                "recyclePaper": 0,
+                                                                                "recycleAluminium": 0
+                                                                                },
+                                                                                "totalEmissions": 53079
+                                                                                },
+                                                                                {
+                                                                                    "date": {
+                                                                                    "year": "2017",
+                                                                                    "month": "August"
+                                                                                    },
+                                                                                    "entries": {
+                                                                                    "electricBill": 80,
+                                                                                    "gasBill": 90,
+                                                                                    "oilBill": 100,
+                                                                                    "carMileage": 400,
+                                                                                    "flightUnder": 1,
+                                                                                    "flightOver": 0,
+                                                                                    "recyclePaper": true,
+                                                                                    "recycleAluminium": true
+                                                                                    },
+                                                                                    "emissions": {
+                                                                                    "electricBill": 8400,
+                                                                                    "gasBill": 9450,
+                                                                                    "oilBill": 11300,
+                                                                                    "carMileage": 316,
+                                                                                    "flightUnder": 1100,
+                                                                                    "flightOver": 0,
+                                                                                    "recyclePaper": 0,
+                                                                                    "recycleAluminium": 0
+                                                                                    },
+                                                                                    "totalEmissions": 30566
+                                                                                    },
+                                                                                    {
+                                                                                        "date": {
+                                                                                        "year": "2017",
+                                                                                        "month": "September"
+                                                                                        },
+                                                                                        "entries": {
+                                                                                        "electricBill": 130,
+                                                                                        "gasBill": 110,
+                                                                                        "oilBill": 200,
+                                                                                        "carMileage": 1000,
+                                                                                        "flightUnder": 0,
+                                                                                        "flightOver": 0,
+                                                                                        "recyclePaper": true,
+                                                                                        "recycleAluminium": true
+                                                                                        },
+                                                                                        "emissions": {
+                                                                                        "electricBill": 13650,
+                                                                                        "gasBill": 11550,
+                                                                                        "oilBill": 22600,
+                                                                                        "carMileage": 790,
+                                                                                        "flightUnder": 0,
+                                                                                        "flightOver": 0,
+                                                                                        "recyclePaper": 0,
+                                                                                        "recycleAluminium": 0
+                                                                                        },
+                                                                                        "totalEmissions": 48590
+                                                                                        },
+                                                                                        {
+                                                                                            "date": {
+                                                                                            "year": "2017",
+                                                                                            "month": "October"
+                                                                                            },
+                                                                                            "entries": {
+                                                                                            "electricBill": 300,
+                                                                                            "gasBill": 400,
+                                                                                            "oilBill": 200,
+                                                                                            "carMileage": 1100,
+                                                                                            "flightUnder": 2,
+                                                                                            "flightOver": 0,
+                                                                                            "recyclePaper": false,
+                                                                                            "recycleAluminium": false
+                                                                                            },
+                                                                                            "emissions": {
+                                                                                            "electricBill": 31500,
+                                                                                            "gasBill": 42000,
+                                                                                            "oilBill": 22600,
+                                                                                            "carMileage": 869,
+                                                                                            "flightUnder": 2200,
+                                                                                            "flightOver": 0,
+                                                                                            "recyclePaper": 184,
+                                                                                            "recycleAluminium": 166
+                                                                                            },
+                                                                                            "totalEmissions": 99519
+                                                                                            },
+                                                                                            {
+                                                                                                "date": {
+                                                                                                "year": "2017",
+                                                                                                "month": "November"
+                                                                                                },
+                                                                                                "entries": {
+                                                                                                "electricBill": 300,
+                                                                                                "gasBill": 400,
+                                                                                                "oilBill": 340,
+                                                                                                "carMileage": 1300,
+                                                                                                "flightUnder": 0,
+                                                                                                "flightOver": 0,
+                                                                                                "recyclePaper": true,
+                                                                                                "recycleAluminium": true
+                                                                                                },
+                                                                                                "emissions": {
+                                                                                                "electricBill": 31500,
+                                                                                                "gasBill": 42000,
+                                                                                                "oilBill": 38420,
+                                                                                                "carMileage": 1027,
+                                                                                                "flightUnder": 0,
+                                                                                                "flightOver": 0,
+                                                                                                "recyclePaper": 0,
+                                                                                                "recycleAluminium": 0
+                                                                                                },
+                                                                                                "totalEmissions": 112947
+                                                                                                },
+                                                                                                {
+                                                                                                    "date": {
+                                                                                                    "year": "2017",
+                                                                                                    "month": "December"
+                                                                                                    },
+                                                                                                    "entries": {
+                                                                                                    "electricBill": 320,
+                                                                                                    "gasBill": 480,
+                                                                                                    "oilBill": 380,
+                                                                                                    "carMileage": 1700,
+                                                                                                    "flightUnder": 0,
+                                                                                                    "flightOver": 0,
+                                                                                                    "recyclePaper": true,
+                                                                                                    "recycleAluminium": true
+                                                                                                    },
+                                                                                                    "emissions": {
+                                                                                                    "electricBill": 33600,
+                                                                                                    "gasBill": 50400,
+                                                                                                    "oilBill": 42940,
+                                                                                                    "carMileage": 1343,
+                                                                                                    "flightUnder": 0,
+                                                                                                    "flightOver": 0,
+                                                                                                    "recyclePaper": 0,
+                                                                                                    "recycleAluminium": 0
+                                                                                                    },
+                                                                                                    "totalEmissions": 128283
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "date": {
+                                                                                                        "year": "2018",
+                                                                                                        "month": "January"
+                                                                                                        },
+                                                                                                        "entries": {
+                                                                                                        "electricBill": 380,
+                                                                                                        "gasBill": 450,
+                                                                                                        "oilBill": 380,
+                                                                                                        "carMileage": 1300,
+                                                                                                        "flightUnder": 0,
+                                                                                                        "flightOver": 0,
+                                                                                                        "recyclePaper": true,
+                                                                                                        "recycleAluminium": true
+                                                                                                        },
+                                                                                                        "emissions": {
+                                                                                                        "electricBill": 39900,
+                                                                                                        "gasBill": 47250,
+                                                                                                        "oilBill": 42940,
+                                                                                                        "carMileage": 1027,
+                                                                                                        "flightUnder": 0,
+                                                                                                        "flightOver": 0,
+                                                                                                        "recyclePaper": 0,
+                                                                                                        "recycleAluminium": 0
+                                                                                                        },
+                                                                                                        "totalEmissions": 131117
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "date": {
+                                                                                                            "year": "2018",
+                                                                                                            "month": "February"
+                                                                                                            },
+                                                                                                            "entries": {
+                                                                                                            "electricBill": 500,
+                                                                                                            "gasBill": 550,
+                                                                                                            "oilBill": 300,
+                                                                                                            "carMileage": 1500,
+                                                                                                            "flightUnder": 0,
+                                                                                                            "flightOver": 0,
+                                                                                                            "recyclePaper": true,
+                                                                                                            "recycleAluminium": true
+                                                                                                            },
+                                                                                                            "emissions": {
+                                                                                                            "electricBill": 52500,
+                                                                                                            "gasBill": 57750,
+                                                                                                            "oilBill": 33900,
+                                                                                                            "carMileage": 1185,
+                                                                                                            "flightUnder": 0,
+                                                                                                            "flightOver": 0,
+                                                                                                            "recyclePaper": 0,
+                                                                                                            "recycleAluminium": 0
+                                                                                                            },
+                                                                                                            "totalEmissions": 145335
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "date": {
+                                                                                                                "year": "2018",
+                                                                                                                "month": "March"
+                                                                                                                },
+                                                                                                                "entries": {
+                                                                                                                "electricBill": 100,
+                                                                                                                "gasBill": 100,
+                                                                                                                "oilBill": 200,
+                                                                                                                "carMileage": 800,
+                                                                                                                "flightUnder": 2,
+                                                                                                                "flightOver": 0,
+                                                                                                                "recyclePaper": true,
+                                                                                                                "recycleAluminium": true
+                                                                                                                },
+                                                                                                                "emissions": {
+                                                                                                                "electricBill": 10500,
+                                                                                                                "gasBill": 10500,
+                                                                                                                "oilBill": 22600,
+                                                                                                                "carMileage": 632,
+                                                                                                                "flightUnder": 2200,
+                                                                                                                "flightOver": 0,
+                                                                                                                "recyclePaper": 0,
+                                                                                                                "recycleAluminium": 0
+                                                                                                                },
+                                                                                                                "totalEmissions": 46432
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "date": {
+                                                                                                                    "year": "2018",
+                                                                                                                    "month": "April"
+                                                                                                                    },
+                                                                                                                    "entries": {
+                                                                                                                    "electricBill": 120,
+                                                                                                                    "gasBill": 80,
+                                                                                                                    "oilBill": 120,
+                                                                                                                    "carMileage": 700,
+                                                                                                                    "flightUnder": 0,
+                                                                                                                    "flightOver": 1,
+                                                                                                                    "recyclePaper": true,
+                                                                                                                    "recycleAluminium": true
+                                                                                                                    },
+                                                                                                                    "emissions": {
+                                                                                                                    "electricBill": 12600,
+                                                                                                                    "gasBill": 8400,
+                                                                                                                    "oilBill": 13560,
+                                                                                                                    "carMileage": 553,
+                                                                                                                    "flightUnder": 0,
+                                                                                                                    "flightOver": 4400,
+                                                                                                                    "recyclePaper": 0,
+                                                                                                                    "recycleAluminium": 0
+                                                                                                                    },
+                                                                                                                    "totalEmissions": 39513
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "date": {
+                                                                                                                        "year": "2018",
+                                                                                                                        "month": "May"
+                                                                                                                        },
+                                                                                                                        "entries": {
+                                                                                                                        "electricBill": 120,
+                                                                                                                        "gasBill": 80,
+                                                                                                                        "oilBill": 120,
+                                                                                                                        "carMileage": 700,
+                                                                                                                        "flightUnder": 0,
+                                                                                                                        "flightOver": 1,
+                                                                                                                        "recyclePaper": true,
+                                                                                                                        "recycleAluminium": true
+                                                                                                                        },
+                                                                                                                        "emissions": {
+                                                                                                                        "electricBill": 12600,
+                                                                                                                        "gasBill": 8400,
+                                                                                                                        "oilBill": 13560,
+                                                                                                                        "carMileage": 553,
+                                                                                                                        "flightUnder": 0,
+                                                                                                                        "flightOver": 4400,
+                                                                                                                        "recyclePaper": 0,
+                                                                                                                        "recycleAluminium": 0
+                                                                                                                        },
+                                                                                                                        "totalEmissions": 39513
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "date": {
+                                                                                                                            "year": "2018",
+                                                                                                                            "month": "June"
+                                                                                                                            },
+                                                                                                                            "entries": {
+                                                                                                                            "electricBill": 80,
+                                                                                                                            "gasBill": 100,
+                                                                                                                            "oilBill": 200,
+                                                                                                                            "carMileage": 800,
+                                                                                                                            "flightUnder": 1,
+                                                                                                                            "flightOver": 0,
+                                                                                                                            "recyclePaper": true,
+                                                                                                                            "recycleAluminium": true
+                                                                                                                            },
+                                                                                                                            "emissions": {
+                                                                                                                            "electricBill": 8400,
+                                                                                                                            "gasBill": 10500,
+                                                                                                                            "oilBill": 22600,
+                                                                                                                            "carMileage": 632,
+                                                                                                                            "flightUnder": 1100,
+                                                                                                                            "flightOver": 0,
+                                                                                                                            "recyclePaper": 0,
+                                                                                                                            "recycleAluminium": 0
+                                                                                                                            },
+                                                                                                                            "totalEmissions": 43232
+                                                                                                                            }
+
 ]);
 
