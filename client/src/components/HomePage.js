@@ -2,6 +2,10 @@ import EmissionsGrid from "../components/EmissionsGrid";
 import EmissionsCard from "./EmissionsCard"
 import { Link } from 'react-router-dom'
 import AppFooter from "./AppFooter";
+import earth from "../earth.svg" 
+import logo from "../Quebab.svg" 
+import logogreen from "../Quebabgreen.svg" 
+import { Button} from "antd"
 
 
 
@@ -13,18 +17,27 @@ const HomePage = ({emission, removeEmission, EmissionValues}) => {
     <>
     <div className="hero">
     <h1>Welcome to Our CO2 Calculator</h1>
+    <img className="earth" src = {logogreen}/>
+    <h1 className="logotype">CARBONATOR</h1>
+    <h3>We believe that understanding and reducing our carbon footprint is essential for a sustainable future.</h3>
+    
     <p>
-      We believe that understanding and reducing our carbon footprint is essential for a sustainable future. By raising awareness and making informed choices, we can mitigate climate change, take individual accountability, conserve the environment, improve our health, and inspire others to join us. Calculate your carbon footprint today and be a part of the journey towards a greener world!
+       By raising awareness and making informed choices, we can mitigate climate change, take individual accountability, conserve the environment, improve our health, and inspire others to join us. Calculate your carbon footprint today and be a part of the journey towards a greener world!
     </p>
+    <Link to='/submit'>
+      <Button className = "button">Get started</Button>
+    </Link>
     </div>
+    
+    
     <div>
     <h2 className="recents">Most Recent</h2>
-    <EmissionsGrid EmissionValues={limitedEmissionValues}/>
+    <EmissionsGrid EmissionValues={limitedEmissionValues}/> 
     <EmissionsCard EmissionValues={EmissionValues} emission={emission} removeEmission={removeEmission}/>
     </div>
-    <Link to='/overview'>
+    {/* <Link to='/overview'>
       <button>See more information</button>
-    </Link>
+    </Link> */}
     <AppFooter/>
     </>
   )

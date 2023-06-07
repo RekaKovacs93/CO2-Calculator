@@ -1,12 +1,13 @@
 import React from 'react';
 import { Layout } from 'antd';
-import './AppFooter.css';
+// import './AppFooter.css';
 
 const { Footer } = Layout;
 
 const AppFooter = () => {
   return (
-    <Footer>
+    <Layout className="layout" style={{background: "rgb(75, 130, 83)"}}>
+    <Footer className='footer' style={{background: "rgb(75, 130, 83)"}}>
       <div className="footer-container">
         <div className="resource-container">
           <h3>Resources</h3>
@@ -48,11 +49,14 @@ const AppFooter = () => {
             <li>
               Panos
             </li>
+            
           </ul>
         </div>
       </div>
-      <p>© 2023</p>
+      {/* <p className='mid'>© 2023</p> */}
+
     </Footer>
+    </Layout>
   );
 };
 
