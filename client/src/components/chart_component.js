@@ -25,7 +25,16 @@ const DoughnutChart = ({EmissionValues, TotalEmission}) => {
           EmissionValues.flightUnder + EmissionValues.flightOver,
           EmissionValues.recyclePaper + EmissionValues.recycleAluminium,
         ],
-        backgroundColor: ["rgba(163, 255, 255, 1)","rgba(135, 247, 252, 1)","rgba(107, 220, 225, 1)","rgba(79, 194, 199, 1)","rgba(46, 168, 174, 1)","rgba(0, 144, 149, 1)"],
+        backgroundColor: 
+        // ["rgba(163, 255, 255, 1)","rgba(135, 247, 252, 1)","rgba(107, 220, 225, 1)","rgba(79, 194, 199, 1)","rgba(46, 168, 174, 1)","rgba(0, 144, 149, 1)"],
+        [
+          "rgb(25, 58, 34)",     // Dark Green
+          "rgb(50, 94, 58)",     // Shade 1
+          "rgb(75, 130, 83)",    // Shade 2
+          "rgb(100, 165, 108)",  // Shade 3
+          "rgb(115, 184, 130)",  // Shade 4
+          "rgb(145, 215, 155)",  // Shade 5 (More Natural)
+        ],
         hoverOffset: 4,
       },
     ],
