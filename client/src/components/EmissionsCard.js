@@ -25,7 +25,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
     }
 
     return (
-        <>
+        
         <Card
         style={{
         width: 300,
@@ -35,14 +35,14 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
         <EditOutlined key="edit" onClick={handleClick} />
         }>
             <Link to={`/display/${id}`} style={{textDecoration: 'none'}}>
-                <h3>This month</h3>
+                <h3>{emission.date.month}  {emission.date.year}</h3>
                 <DoughnutChart EmissionValues={EmissionValues}  TotalEmission = {TotalEmission}/>
             </Link>
             
             {/* <button onClick={handleDelete} value={emission._id}>Delete Emission</button> */}
         </Card>
             
-        </>
+       
     )
 }
 

@@ -39,32 +39,21 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
        
     }
 
-    // const handleSwitchPaper = (evt) =>{
-    //     const newSubmitedData = Object.assign({}, submitedData);
-    //         newSubmitedData.recyclePaper = evt;
-    //         setSubmitedData(newSubmitedData)
-
-    // }
-    // const handleSwitchAluminium = (evt) =>{
-    //     const newSubmitedData = Object.assign({}, submitedData);
-    //     newSubmitedData.recycleAluminium = evt;
-    //     setSubmitedData(newSubmitedData)
-    // }
-
     //handle the submit event, it sends all values to container to create an object
     const handleSubmit = (event) =>{
         // event.preventDefault()
          console.log(submitedData)
         const newCarbonData = {
-            electricBill: submitedData.electricBill * 105,
-            gasBill: submitedData.gasBill * 105,
-            oilBill: submitedData.carMileage * 113,
-            carMileage: submitedData.carMileage * 0.79,
-            flightUnder: submitedData.flightUnder * 1100,
-            flightOver: submitedData.flightOver * 4400,
+            electricBill: parseFloat(submitedData.electricBill) * 105,
+            gasBill: parseFloat(submitedData.gasBill) * 105,
+            oilBill: parseFloat(submitedData.oilBill) * 113,
+            carMileage: parseFloat(submitedData.carMileage) * 0.79,
+            flightUnder: parseFloat(submitedData.flightUnder) * 1100,
+            flightOver: parseFloat(submitedData.flightOver) * 4400,
             recyclePaper: (submitedData.recyclePaper? 0 : 184),
             recycleAluminium: (submitedData.recycleAluminium? 0 : 166)
         }
+        console.log("emision data", newCarbonData)
         const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
         const newData = {
             date: date,
