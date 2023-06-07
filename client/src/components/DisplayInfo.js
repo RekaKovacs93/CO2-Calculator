@@ -13,7 +13,7 @@ const DisplayInfo = () =>{
     const {id} = useParams()
     const  navigate = useNavigate()
     const [carbonInfo, setCarbonInfo] = useState(null)
-    console.log(id)
+  
 
     const updateCarbonData = (data) => {
         setCarbonInfo(data)
@@ -24,12 +24,12 @@ const DisplayInfo = () =>{
     },[]) 
 
     const getFormDB = () =>{
-        console.log("hello")
+        
         getOneTracker(id)
-        .then(data=>{setCarbonInfo(data)
-        console.log({data})})
+            .then(data=>{setCarbonInfo(data)
+            console.log('data to display',data)})
+        
     }
-    console.log(carbonInfo)
    const updateLocalData = (data) =>{
     setCarbonInfo(data);
    }
