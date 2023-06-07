@@ -29,12 +29,12 @@ const BarChartComp = ({carbonTrackerCollection}) => {
                 carbonTrackerCollection.emissions.flightUnder + carbonTrackerCollection.emissions.flightOver,
                 carbonTrackerCollection.emissions.recyclePaper + carbonTrackerCollection.emissions.recycleAluminium
               ],
-            backgroundColor: "rgba(163, 255, 255, 1)"
+            backgroundColor: "rgb(145, 215, 155)"
             },
             {
                 label: "Average Score",
                 data: [2973, 3091, 2422, 16222, 4472, 287],
-                backgroundColor: "rgba(107, 220, 225, 1)"
+                backgroundColor: "rgb(75, 130, 83)"
         }],
             // borderColor: [
             // 'rgb(255, 99, 132)',
