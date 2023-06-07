@@ -118,7 +118,7 @@ const UpdateForm = ({updateTrackingData}) => {
             </Form.Item>
             </div>
             <Form.Item>
-                <Button className = "button" htmlType="submit">Update</Button>
+                <Button className = "button" style = {{background: "rgb(100, 165, 108)"}} htmlType="submit">Update</Button>
             </Form.Item>
         </Form>
     );

@@ -1,12 +1,14 @@
 .cards{
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  margin: 50px;
+  margin: 50px 80px;
 
 }
 
 .logoimg{
   position: absolute;
+  top: 3px;
   left: 50px;
   height: 60px;
   width:60px
@@ -17,7 +19,9 @@
   color: rgb(75, 130, 83);
   margin-top: 0;
 }
-
+.button{
+  color:rgb(243, 243, 243)
+}
 /* .chart-container{
   width: 400px;
   text-align: center;
@@ -34,9 +38,12 @@ body{
   /* background-image: url('./forest-g3847e3ae7_1280.jpeg'); */
   /* background-color: #cccccc;  */
   margin: 50px 250px;
-  height: 600px;
+  height: 800px;
   justify-items: center;
   text-align: center;
+}
+.welcome{
+  margin-bottom: 0;
 }
 .herocont{
   display: flex;
@@ -111,10 +118,10 @@ header{
 }
 
 .linechart{
-  margin: 0px 80px;
-
-
+  margin: 0px 150px 120px 150px;
 }
+
+
 h1{
   margin: 50px 0
 }

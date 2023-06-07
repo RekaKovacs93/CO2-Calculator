@@ -23,7 +23,7 @@ const Overview = ({carbonTrackerCollection, EmissionValues, carbonInfo}) => {
         </div>
         <div className="linechart">
         <h1>Your monthly emissions</h1>
-        <EmissionsGrid EmissionValues={EmissionValues} carbonTrackerCollection={carbonTrackerCollection} />
+        <EmissionsGrid  EmissionValues={EmissionValues} carbonTrackerCollection={carbonTrackerCollection} />
         
         {/* <Suggestions carbonInfo={carbonInfo}/> */}
         </div>
