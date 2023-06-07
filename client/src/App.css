@@ -49,12 +49,14 @@ header{
   width: 500px;
   
 }
-
+.displaycard{
+  text-align: left;
+}
 .displaycont{
   display: flex;
-  gap: 50px;
-  margin: 30px;
-  justify-content: space-between;
+  gap: 100px;
+  margin: 50px 90px;
+  justify-content: center;
 }
 .layout .ant-menu .ant-menu-item-selected  {
   background-color: rgb(100, 165, 108);
@@ -83,6 +85,13 @@ header{
 
 .line{
   width: 800px
+}
+
+.suggestions{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items:start;
 }
 
 
