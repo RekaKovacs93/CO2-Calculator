@@ -26,8 +26,7 @@ const DisplayInfo = () =>{
     const getFormDB = () =>{
         
         getOneTracker(id)
-            .then(data=>{setCarbonInfo(data)
-            console.log('data to display',data)})
+            .then(data=>{setCarbonInfo(data)})
         
     }
    const updateLocalData = (data) =>{
@@ -77,19 +76,20 @@ const DisplayInfo = () =>{
         ]}>
         <div className="displaycard"><h2>{carbonInfo.date.month} {carbonInfo.date.year}</h2>
         <hr></hr>
-            <p><b>Electric:</b>{carbonInfo.entries.electricBill}</p>  
+            <p><b>Electric:</b> {carbonInfo.entries.electricBill}</p>  
             <p><b>Gas:</b> {carbonInfo.entries.gasBill}</p>  
-            <p><b>Oil:</b>{carbonInfo.entries.oilBill}</p>  
-            <p><b>Car:</b>{carbonInfo.entries.carMileage}</p>
-            <p><b>Flight Under 4 Hours:</b>{carbonInfo.entries.flightUnder}</p>  
-            <p><b>Flight Over 4 Hours:</b>{carbonInfo.entries.flightOver}</p>  
-            <p><b>Recycle Paper:</b>{carbonInfo.entries.recyclePaper}</p>  
-            <p><b>Recycle Aluminium:</b>{carbonInfo.entries.recycleAluminium}</p>
+            <p><b>Oil:</b> {carbonInfo.entries.oilBill}</p>  
+            <p><b>Car:</b> {carbonInfo.entries.carMileage}</p>
+            <p><b>Flight Under 4 Hours:</b> {carbonInfo.entries.flightUnder}</p>  
+            <p><b>Flight Over 4 Hours:</b> {carbonInfo.entries.flightOver}</p>  
+            <p><b>Recycle Paper:</b> {carbonInfo.entries.recyclePaper}</p>  
+            <p><b>Recycle Aluminium:</b> {(carbonInfo.entries.recycleAluminium)? true : false}</p>
             </div>
             {/* <hr></hr>
             <h3>Total emissions:</h3><h1>{carbonInfo.totalEmissions}</h1> */}
             </Card>
         </div>
+        <h1>Your score vs UK average</h1>
             <BarChartComp carbonTrackerCollection={carbonInfo}/>
             <div className = "suggestions">
             <Suggestions carbonInfo={carbonInfo}/>

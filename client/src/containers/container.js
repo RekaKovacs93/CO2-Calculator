@@ -41,12 +41,7 @@ function Container() {
     }
     setMonthsOfTheYear(copyOfMonths)
   }
-
-
   useEffect (() => {
-    // getTwelve().then((data) => {
-    //   setLastTwelveItems(data)
-    // })
     getMonthsAndYears()
   }, [])
   const getMonthsAndYears = () =>{
@@ -54,7 +49,6 @@ function Container() {
       const yearObj = {}
       yearObj[year] = months
       return yearObj
-      // return yearObj[`${year}`] = months
     })
     setMonthsOfTheYear(allMonthsAndYears)
    

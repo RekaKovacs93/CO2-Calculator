@@ -30,8 +30,6 @@ const data = {
         type: 'line',
         data: data,
       };
-
-    console.log(config.data)
     return (
         <>
             <Line classNamae = "line" data = {config.data}/>
