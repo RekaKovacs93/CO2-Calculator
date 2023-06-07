@@ -6,9 +6,9 @@ const { Header } = Layout;
 
 const NavBar = () => (
   <Layout className="layout">
-    <Header style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Menu theme="dark" mode="horizontal" >
-        <Menu.Item key="1" icon={<HomeOutlined/>}>
+    <Header style={{ display: 'flex', justifyContent: 'space-between', background: "rgb(50, 94, 58)" }}>
+      <Menu theme="dark" mode="horizontal" style={{ background: "rgb(50, 94, 58)" }}>
+        <Menu.Item key="1" icon={<HomeOutlined/>} style={{ background: "rgb(50, 94, 58)" }}>
         <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="2">

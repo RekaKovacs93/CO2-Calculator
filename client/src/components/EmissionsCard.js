@@ -33,7 +33,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
           marginTop: 16,
         }}
         actions={[
-          <SettingOutlined key="setting" />,
+          // <SettingOutlined key="setting" />,
           <EditOutlined key="edit" onClick={handleClick} />,
           <EllipsisOutlined key="ellipsis" />,
         ]}

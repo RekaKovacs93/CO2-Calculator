@@ -128,7 +128,7 @@ function Container() {
         <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
-        <Route path="/display/:id" element={<DisplayInfo/>}/>
+        <Route path="/display/:id" element={<DisplayInfo EmissionValues={carbonTrackerCollection }/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         <Route path="/resources" element={<Resources/>}/>
         <Route path="*" element={<ErrorPage/>}/>
