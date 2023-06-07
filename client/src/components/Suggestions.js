@@ -5,12 +5,12 @@ import { CheckCircleFilled, CloseCircleFilled, PlusCircleFilled } from '@ant-des
 const Suggestions = ({carbonInfo}) => {
 
     const threshold = {
-        electricBill: 0,
-        gasBill: 0,
-        oilBill: 0,
-        carMileage: 0,
-        flightUnder: 0,
-        flightOver: 0,
+        electricBill: 7350,
+        gasBill: 4725,
+        oilBill: 8475,
+        carMileage: 2370,
+        flightUnder: 3300,
+        flightOver: 8800,
         recyclePaper: 5,
         recycleAluminium: 5 
 
@@ -51,16 +51,6 @@ const Suggestions = ({carbonInfo}) => {
 
         setHighEmissions(highValues.map((element) => element[0]))
         setLowEmissions(lowValues.map((element) => element[0]))
-        // console.log(hihgValues)
-        // Object.entries(carbonInfo.emissions).forEach((key) => {
-        //     console.log(key)
-        //     console.log(hihgValues.includes(key))
-        //     if(hihgValues){
-        //         highEmissions.push(key[0])
-        //     }else{
-        //         lowEmissions.push(key[0])
-        //     }
-        // })
 
     }
 
@@ -74,13 +64,12 @@ const Suggestions = ({carbonInfo}) => {
 
     return (
         <Space>
-            
-            <Collapse style={{width: 400, height: 'auto', backgroundColor: 'green'}}>
+            {/* <Collapse style={{width: 500, height: 'auto', backgroundColor: "rgb(75, 130, 83)"}}>
                 <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300}}> <List> {lowEmissionsDisplay}</List> </Card>}>
                     <p>{lowEmissionMsg}</p>
                 </Collapse.Panel>
-            </Collapse>
-            <Collapse style={{width: 400, height: 'auto', backgroundColor: 'red'}}>
+            </Collapse> */}
+            <Collapse style={{width: 385, height: 'auto', backgroundColor: "rgb(75, 130, 83)"}}>
                 <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
                     <List>
                         {highEmissionSolutions}

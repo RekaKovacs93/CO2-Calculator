@@ -7,6 +7,9 @@ const LineChart = ({carbonTrackerCollection}) => {
   const lineData = carbonTrackerCollection.map((document) => {
     return document.totalEmissions
   })
+  const labelData = carbonTrackerCollection.map((date) => {
+    return date.month
+  })
 
 // const labels = carbonTrackerCollection.emissions.map(())
 
@@ -14,11 +17,11 @@ const LineChart = ({carbonTrackerCollection}) => {
 const data = {
   labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
   datasets: [{
-    label: 'My First Dataset',
-    // data: lastTwelveItems.map(item => item.value),
+    label: 'Yearly Overview',
     data: lineData,
     fill: false,
-    borderColor: 'rgb(75, 192, 192)',
+    borderColor: "rgb(100, 165, 108)",
+    backgroundColor: "transparent",
     tension: 0.1
   }]
 };
@@ -27,11 +30,9 @@ const data = {
         type: 'line',
         data: data,
       };
-
-    console.log(config.data)
     return (
         <>
-            <Line data = {config.data}/>
+            <Line classNamae = "line" data = {config.data}/>
         </>
     )
 }
