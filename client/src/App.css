@@ -9,12 +9,13 @@
 /* .chart-container{
   width: 400px;
   text-align: center;
-} */ 
+}   */
 body{
   margin: 10px 0; 
   background-color: rgb(243, 243, 243);
   text-align: center;
   color: rgb(70, 70, 70);
+  
 }
 .hero{
   /* background-image: url('./forest-g3847e3ae7_1280.jpeg'); */

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
 import './AppFooter.css';
-import forestImg from '../images/forest.jpeg'
 
 const { Footer } = Layout;
 
@@ -52,10 +51,8 @@ const AppFooter = () => {
           </ul>
         </div>
       </div>
-      <img className='footer-image' src={forestImg} alt="Forest"/>
       <p>© 2023</p>
     </Footer>
-    
   );
 };
 
