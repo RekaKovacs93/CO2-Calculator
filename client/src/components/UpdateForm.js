@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { updateTracker } from "../service/TrackerSevice";
-import {InputNumber, Button, Switch, Form, DatePicker} from 'antd'
+import {InputNumber, Button, Switch, Form, Statistic, Space} from 'antd'
 import { CheckOutlined, CloseOutlined} from '@ant-design/icons'
 import dayjs from 'dayjs'
 import { useParams, useNavigate} from 'react-router-dom'
@@ -23,15 +23,15 @@ const UpdateForm = ({updateTrackingData}) => {
     const [form] = Form.useForm()
     const [carbonInfo, setCarbonInfo] = useState(null)
     const [formData, setFormData] = useState(null)
-    //console.log(formData)
     // const initDate = `${carbonInfo.entries.monthsSubmition}`
 
     useEffect(() =>{
         getInfoFormDB()
     },[]) 
-    useEffect(() =>{
-        form.setFieldsValue(formData)
-    },[formData]) 
+    // useEffect(() =>{
+    //     console.log("heyyyyyy", {carbonInfo})
+    //     setInitialValues()
+    // },[formData]) 
 
   
 
@@ -41,18 +41,29 @@ const UpdateForm = ({updateTrackingData}) => {
         .then(data=>{
             setCarbonInfo(data)
             setFormData(data.entries)
+            const formFeildsObj = {...data.date, ...data.entries}
+            form.setFieldsValue(formFeildsObj)
+
+            
         })
 
         // .then(data =>{setFormData(data)} )
         // console.log(carbonInfo)
         // setFormData(carbonInfo.entries)
     }
-
-    // if (!formData && !carbonInfo) {
-    //     return
+    // const setInitialValues = () =>{
+    //     console.log({carbonInfo})
+    //     const formFieldsObj = {...carbonInfo.date, ...formData}
+    //     form.setFieldsValue(formFieldsObj)
     // }
-   
+    
+    if (!formData && !carbonInfo) {
+        return
+    }
+    
     const handleValuesChange = (changedValues, allValues) => {
+        delete allValues.year
+        delete allValues.month
         setFormData(allValues)
 
     };
@@ -76,7 +87,8 @@ const UpdateForm = ({updateTrackingData}) => {
         const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
         const newData = {
             _id: carbonInfo._id,
-            entries: values, 
+            date: carbonInfo.date,
+            entries: formData, 
             emissions: newCarbonData, 
             totalEmissions: newTotalEmissions
         }
@@ -93,9 +105,14 @@ const UpdateForm = ({updateTrackingData}) => {
     return (
         
         <Form  form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
-            {/* <Form.Item name = "monthsSubmitions" label = "Choose The Month">
-                <DatePicker picker="month" format="YYYY-MM"/>
-            </Form.Item> */}
+            <Space direction="horizontal">
+            <Form.Item name = 'year'>
+            <Statistic   groupSeparator=""/>
+            </Form.Item>
+            <Form.Item name = 'month'>
+                <Statistic  />
+            </Form.Item>
+            </Space>
             <Form.Item label="Electric Bill" name="electricBill">
                 <InputNumber addonAfter="£" min={0} max={9999999}/>
             </Form.Item>
