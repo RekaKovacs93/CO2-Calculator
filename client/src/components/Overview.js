@@ -8,6 +8,7 @@ import EmissionsGrid from "./EmissionsGrid";
 import AppFooter from "./AppFooter";
 import BarOverview from "./BarOverview";
 import Suggestions from "./Suggestions";
+import {View, ScrollView} from 'react-native'
 
 const Overview = ({carbonTrackerCollection, EmissionValues, carbonInfo}) => {
     console.log(carbonInfo)
@@ -22,8 +23,12 @@ const Overview = ({carbonTrackerCollection, EmissionValues, carbonInfo}) => {
         <BarOverview carbonTrackerCollection={carbonTrackerCollection}/>
         </div>
         <div className="linechart">
+        <View>
         <h1>Your monthly emissions</h1>
-        <EmissionsGrid EmissionValues={EmissionValues} carbonTrackerCollection={carbonTrackerCollection} />
+            <ScrollView horizontal = {true}>
+                <EmissionsGrid EmissionValues={EmissionValues} carbonTrackerCollection={carbonTrackerCollection} />
+            </ScrollView>
+        </View>
         
         {/* <Suggestions carbonInfo={carbonInfo}/> */}
         </div>
