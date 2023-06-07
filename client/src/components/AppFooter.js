@@ -7,12 +7,13 @@ const { Footer } = Layout;
 const AppFooter = () => {
   return (
     <Footer style={{ 
-      backgroundColor: 'darkgrey', 
-      textAlign: 'center', 
+      backgroundColor: 'lightgrey', 
+      textAlign: 'left', 
       fontSize: '17px', 
-      padding: '20px' 
+      marginLeft: '0px',
+      paddingInlineStart: 10
       }}>
-
+      <h3>Resources</h3>
       <ul style={{ 
         listStyleType: 'none', 
         paddingInlineStart: 0,
@@ -40,6 +41,7 @@ const AppFooter = () => {
             </a>
           </li>
         </ul>
+        <p>© 2023</p>
     </Footer>
   );
 };
