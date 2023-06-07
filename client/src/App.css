@@ -31,13 +31,17 @@ header{
 .input{
   width: 100px;
 }
+.select{
+  width: 500px
+}
 .inputsmall{
-  width: 35px;
+  width: 50px;
 }
 .formflex{
   display: flex;
+  margin: 20px 50px
 }
-.switch, .input, .inputsmall{
+.switch, .input, .inputsmall, .select{
   margin-right: 30px;
 }
 
@@ -52,3 +56,19 @@ header{
   margin: 30px;
   justify-content: space-between;
 }
+.layout .ant-menu .ant-menu-item-selected  {
+  background-color: rgb(100, 165, 108);
+}
+
+.input:hover, .select:hover, .inputsmall:hover {
+  /* background-color: #ff0000; Replace with your desired primary color */
+  border-color: rgb(100, 165, 108)
+}
+
+
+
+.select:hover{
+
+  border-color: rgb(100, 165, 108)
+}
+
