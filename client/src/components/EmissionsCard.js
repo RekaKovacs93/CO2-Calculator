@@ -22,44 +22,29 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
     }
     const handleClick = () => {
       navigate(`/update/${id}`)
-      console.log(emission._id)
     }
 
     return (
-        <Link to={`/display/${id}`} style={{textDecoration: 'none'}}>
+        <>
         <Card
         style={{
-          width: 300,
-          marginTop: 16,
+        width: 300,
+        marginTop: 16,
         }}
         actions={[
-          // <SettingOutlined key="setting" />,
-          <EditOutlined key="edit" onClick={handleClick} />,
-          <EllipsisOutlined key="ellipsis" />,
-        ]}
-      >
-        {/* <p>Electric:{EmissionValues.electricBill}</p>  
-            <p>Gas:{EmissionValues.gasBill}</p>  
-            <p>Oil:{EmissionValues.oilBill}</p>  
-            <p>Car Mileage:{EmissionValues.carMileage}</p>  
-            <p>Flight Under 4 Hours:{EmissionValues.flightUnder + EmissionValues.flightOver}</p>  
-            <p>Flight Over 4 Hours:{EmissionValues.flightOver}</p>  
-            <p>Recycle Paper:{EmissionValues.recyclePaper}</p>  
-            <p>Recycle Aluminium:{EmissionValues.recycleAluminium}</p>  
-            <p> Total emissions: </p>
-            <p>{emission.totalEmissions} </p> */}
-             
-             
-            
-            {/* <label>Delete Emission </label> */}
-
-            <h3>This month</h3>
-            <DoughnutChart EmissionValues={EmissionValues}  TotalEmission = {TotalEmission}/>
+        // <SettingOutlined key="setting" />,
+        <EditOutlined key="edit" onClick={handleClick} />,
+        <EllipsisOutlined key="ellipsis" />,
+        ]}>
+            <Link to={`/display/${id}`} style={{textDecoration: 'none'}}>
+                <h3>This month</h3>
+                <DoughnutChart EmissionValues={EmissionValues}  TotalEmission = {TotalEmission}/>
+            </Link>
             
             {/* <button onClick={handleDelete} value={emission._id}>Delete Emission</button> */}
-      </Card>
+        </Card>
             
-        </Link>
+        </>
     )
 }
 
