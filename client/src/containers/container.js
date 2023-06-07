@@ -1,7 +1,7 @@
 import React from "react";
 import DoughnutChart from "../components/chart_component";
 import { useState, useEffect } from "react";
-// import { getTwelve } from "../service/TrackerSevice";
+import { getTracker } from "../service/TrackerSevice";
 import MetersForm from "../components/MetersForm";
 import Navbar from "../components/NavBar";
 import UpdateForm from "../components/UpdateForm";
@@ -31,8 +31,10 @@ function Container() {
 
   const updateMonthsAndYears = (date) =>{
     const copyOfMonths =[...monthsOfTheYear]
+    console.log("the copy of the year", monthsOfTheYear)
     const yearkeys = copyOfMonths.map((year) => Object.keys(year)[0])
     const yearIndex = yearkeys.indexOf(date.year)
+    console.log("date data", date, "index of the year", yearIndex)
     const monthIndex = copyOfMonths[yearIndex][date.year].indexOf(date.month)
     if (monthIndex >-1){
       const spliceListOfMonths =  [... copyOfMonths[yearIndex][date.year]]
@@ -43,17 +45,35 @@ function Container() {
   }
   useEffect (() => {
     getMonthsAndYears()
+    getDBSeeds()
   }, [])
-  const getMonthsAndYears = () =>{
-    const allMonthsAndYears = years.map((year) => {
-      const yearObj = {}
-      yearObj[year] = months
-      return yearObj
-    })
-    setMonthsOfTheYear(allMonthsAndYears)
+  const getMonthsAndYears = (data = 1) =>{
+    console.log("helooooo")
+    if (!data===1){
+      console.log("helooooo")
+      const mapDBDates = data.map((element) => element.date)
+      console.log("date of the dB",mapDBDates)
+      mapDBDates.forEach((element) => {
+        updateMonthsAndYears(element)
+      });
+    }else{
+      const allMonthsAndYears = years.map((year) => {
+        const yearObj = {}
+        yearObj[year] = months
+        return yearObj
+      })
+      setMonthsOfTheYear(allMonthsAndYears)
+      console.log("monthOfTheYear", monthsOfTheYear)
+    }
    
   }
-   
+  const getDBSeeds = ()=> {
+    getTracker()
+    .then(data => {
+      setCarbonTrackerCollection(data)
+      getMonthsAndYears(data)
+    })
+  }
 
   const updateTrackingData = (data, oldData) =>{
   
