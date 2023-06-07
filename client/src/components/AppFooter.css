@@ -1,9 +1,8 @@
 .footer-container {
   display: flex;
   justify-content: space-between;
-  background-color: lightgrey;
+  background-color:rgb(180, 205, 190);
   padding: 10px;
-  width: 100%;
 }
 
 .resource-container {
@@ -37,15 +36,13 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  max-width: 82vw;
 }
-
 
 footer {
   margin-top: auto;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.footer-image {
+  width:1vw;
 }
