@@ -5,6 +5,7 @@ import AppFooter from "./AppFooter";
 import earth from "../earth.svg" 
 import logo from "../Quebab.svg" 
 import logogreen from "../Quebabgreen.svg" 
+import { Button} from "antd"
 
 
 
@@ -23,6 +24,9 @@ const HomePage = ({emission, removeEmission, EmissionValues}) => {
     <p>
        By raising awareness and making informed choices, we can mitigate climate change, take individual accountability, conserve the environment, improve our health, and inspire others to join us. Calculate your carbon footprint today and be a part of the journey towards a greener world!
     </p>
+    <Link to='/submit'>
+      <Button className = "button">Get started</Button>
+    </Link>
     </div>
     
     
@@ -31,9 +35,9 @@ const HomePage = ({emission, removeEmission, EmissionValues}) => {
     <EmissionsGrid EmissionValues={limitedEmissionValues}/> 
     <EmissionsCard EmissionValues={EmissionValues} emission={emission} removeEmission={removeEmission}/>
     </div>
-    <Link to='/overview'>
+    {/* <Link to='/overview'>
       <button>See more information</button>
-    </Link>
+    </Link> */}
     <AppFooter/>
     </>
   )

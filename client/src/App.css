@@ -5,9 +5,11 @@
 
 }
 
-img :not(.earth){
-  position: relative;
-  left: -200px
+.logoimg{
+  position: absolute;
+  left: 50px;
+  height: 60px;
+  width:60px
 
 }
 .logotype{
@@ -130,7 +132,7 @@ h1{
 
 .logo{
   position: relative;
-  left: -460px;
+  left: 60px;
   top: -20px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;

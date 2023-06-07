@@ -113,6 +113,7 @@ const UpdateForm = ({updateTrackingData}) => {
                 <Statistic  />
             </Form.Item>
             </Space>
+            <div className="formflex">
             <Form.Item label="Electric Bill" name="electricBill">
                 <InputNumber addonAfter="£" min={0} max={9999999}/>
             </Form.Item>
@@ -122,6 +123,8 @@ const UpdateForm = ({updateTrackingData}) => {
             <Form.Item label="Oil Bill" name="oilBill">
                 <InputNumber addonAfter = "£" min={0} max={9999999}/>
             </Form.Item>
+            </div>
+            <div className="formflex">
             <Form.Item label="Mileage of Your Car" name="carMileage">
                 <InputNumber addonAfter = "mi" min={0} max={9999999} />
             </Form.Item>
@@ -131,14 +134,17 @@ const UpdateForm = ({updateTrackingData}) => {
             <Form.Item label="Number of Flights(more than 4 hours)"  name="flightOver">
                 <InputNumber min={0}  max={9999999} />
             </Form.Item>
+            </div>
+            <div className="formflex">
             <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
                 <Switch  checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />} />
             </Form.Item>
             <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
                 <Switch checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
             </Form.Item>
+            </div>
             <Form.Item>
-                <Button htmlType="submit">Update</Button>
+                <Button className = "button" htmlType="submit">Update</Button>
             </Form.Item>
         </Form>
     );

@@ -67,7 +67,7 @@ const Suggestions = ({carbonInfo}) => {
     const lowEmissionsDisplay  = lowEmissions.map((name, index) => <List.Item key = {index} > <CheckCircleFilled style={{color: 'green'}}/> {name} </List.Item>) 
     const highEmissionsDisplay  = highEmissions.map((name, index) => <List.Item key = {index} > <CloseCircleFilled style={{color: 'red'}} /> {name} </List.Item>) 
 
-    const highEmissionSolutions = highEmissions.map((name, index) => <List.Item key={index}> <PlusCircleFilled style={{color: 'red'}} /> {recommendationsForEmisions[name]} </List.Item>)
+    const highEmissionSolutions = highEmissions.map((name, index) => <List.Item key={index}> <PlusCircleFilled style={{color: 'green'}} /> {recommendationsForEmisions[name]} </List.Item>)
     const lowEmissionMsg = (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=2) ? congratsSentence.max : 
         (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.aboveAVG:
         (carbonInfo.totalEmissions <= emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.underAVG : congratsSentence.low

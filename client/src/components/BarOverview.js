@@ -3,27 +3,17 @@ import Chart from 'chart.js/auto';
 import { Bar } from "react-chartjs-2";
 
 const BarOverview = ({carbonTrackerCollection}) => {
-
+    
+    const totalsdata = carbonTrackerCollection.map((data) => {
+        return data.totalEmissions
+    })
     const data = {
 
         labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
         datasets: [{
             axis: 'y',
             label: 'Your Score',
-            data: [
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions,
-                carbonTrackerCollection.totalEmissions
-              ],
+            data: totalsdata,
             backgroundColor: "rgb(145, 215, 155)"
             },
             {
