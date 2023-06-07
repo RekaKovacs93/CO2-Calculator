@@ -97,7 +97,9 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
 
     return (
         <Form initialValues={submitedData} form={form} onFinish={handleSubmit} onValuesChange={handleOnChange}>
-                <Form.Item name = "year" label = "Choose The Year">
+                <div className="formflex">
+
+                <Form.Item name = "year" className = "select" label = "Choose The Year">
                     <Select onChange={handleYearChange} options={monthsOfTheYear.map((yearObj) =>(
                         {
                             label: Object.keys(yearObj)[0],
@@ -105,7 +107,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
                         }
                     ))}/>
                 </Form.Item>
-                <Form.Item name = "month" label = "Choose The Month">
+                <Form.Item name = "month" className = "select" label = "Choose The Month">
                     <Select  options={choosenYear.map((monthString) => (
                         {
                             label: monthString,
@@ -113,6 +115,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
                         }
                     ))}/>
                 </Form.Item>
+                </div><hr></hr>
                 <div className="formflex">
                 <Form.Item label="Electric Bill" name = "electricBill" >
                     <InputNumber className = "input" value = {submitedData.electricBill} addonAfter = "£" min={0} />
@@ -137,14 +140,14 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
                 </div>
                 <div className="formflex">
                 <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
-                    <Switch className="switch" value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
+                    <Switch className="switch" style = {{background: "rgb(100, 165, 108)"}} value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
                 </Form.Item>
                 <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
-                    <Switch className="switch" value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
+                    <Switch className="switch" style = {{background: "rgb(100, 165, 108)"}} value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />} />
                 </Form.Item>
                 </div>
                 <Form.Item>
-                    <Button className = "button" type = 'primary' htmlType="submit">Submit</Button>
+                    <Button className = "button" type = 'primary' htmlType="submit" style = {{background: "rgb(100, 165, 108)"}}>Submit</Button>
                 </Form.Item>
  
         </Form>
