@@ -68,11 +68,7 @@ const DisplayInfo = () =>{
             marginTop: 16,
             }}
             actions={[
-          // <SettingOutlined key="setting" />,
-          <EditOutlined key="edit" 
-        //   onClick={handleClick} 
-
-          />
+          <EditOutlined key="edit" />
         ]}>
         <div className="displaycard"><h2>{carbonInfo.date.month} {carbonInfo.date.year}</h2>
         <hr></hr>
