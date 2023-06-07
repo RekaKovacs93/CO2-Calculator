@@ -24,7 +24,7 @@ import AppFooter from "../components/AppFooter";
 
 function Container() {
   const months = [  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  const years = [2016, 2017, 2018, 2019, 2016, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]
+  const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]
   
   const [carbonTrackerCollection, setCarbonTrackerCollection] = useState([
   {
@@ -83,8 +83,19 @@ function Container() {
   console.log(carbonTrackerCollection)
   const addTrackingData = (data) => {
     setCarbonTrackerCollection([...carbonTrackerCollection, data])
+    updateMonthsAndYears(data.date)
+  }
 
-
+  const updateMonthsAndYears = (date) =>{
+    const copyOfMonths = monthsOfTheYear
+    console.log(copyOfMonths)
+    const yearkeys = copyOfMonths.map((year) => Object.keys(year)[0])
+    const yearIndex = yearkeys.indexOf(date.year)
+    const monthIndex = copyOfMonths[yearIndex][date.year].indexOf(date.month)
+    if (monthIndex >-1){
+      copyOfMonths[yearIndex][date.year].splice(monthIndex, 1)
+    }
+    setMonthsOfTheYear(copyOfMonths)
   }
 
 
@@ -96,16 +107,15 @@ function Container() {
   }, [])
   const getMonthsAndYears = () =>{
     const allMonthsAndYears = years.map((year) => {
-      console.log(year)
       const yearObj = {}
       yearObj[year] = months
       return yearObj
       // return yearObj[`${year}`] = months
     })
     setMonthsOfTheYear(allMonthsAndYears)
-    console.log(monthsOfTheYear)
+   
   }
-  console.log(monthsOfTheYear)
+  
   
 
   const updateTrackingData = (data, oldData) =>{
@@ -114,8 +124,6 @@ function Container() {
     const collectionLocal = carbonTrackerCollection
     collectionLocal[index] = data
     setCarbonTrackerCollection(collectionLocal)
-    console.log(carbonTrackerCollection)
-    console.log(index)
   }
 
 
@@ -125,10 +133,10 @@ function Container() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage EmissionValues={carbonTrackerCollection }/>}/>
-        <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData}/>}/>
+        <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData} monthsOfTheYear={monthsOfTheYear}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
-        <Route path="/display/:id" element={<DisplayInfo/>}/>
+        <Route path="/display/:id" element={<DisplayInfo EmissionValues={carbonTrackerCollection }/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         {/* <Route path="/resources" element={<Resources/>}/> */}
         <Route path="*" element={<ErrorPage/>}/>

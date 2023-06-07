@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
-    const initialObj = {       
+    const initialObj = {     
         electricBill: 0,
         gasBill: 0,
         oilBill: 0,
@@ -20,13 +20,23 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
     const navigate = useNavigate()
     const   [form] = Form.useForm()
     let object1 ={}
+    const [choosenYear, setChoosenYear] = useState ([])
+    const [date, setDate] = useState(null) 
     const [submitedData, setSubmitedData] = useState(initialObj)
 
     const handleOnChange = (changedValue, allValues) => { 
-        
-        console.log(dayjs(`${allValues["monthsSubmition"]}`))
-        console.log(submitedData)
-        setSubmitedData(allValues)
+        if (Object.keys(changedValue)[0] === 'year' || Object.keys(changedValue)[0] === 'month'){
+            const tempdate = Object.assign({},date)
+            tempdate[Object.keys(changedValue)[0]] = Object.values(changedValue)[0] 
+            console.log(tempdate)
+            setDate(tempdate)
+        }else{
+            delete allValues.year
+            delete allValues.month
+            console.log({allValues})
+            setSubmitedData(allValues)
+        }
+       
     }
 
     // const handleSwitchPaper = (evt) =>{
@@ -57,6 +67,7 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
         }
         const newTotalEmissions = Object.values(newCarbonData).reduce((total,next) => total+next,0)
         const newData = {
+            date: date,
             entries: submitedData, 
             emissions: newCarbonData, 
             totalEmissions: newTotalEmissions
@@ -65,7 +76,8 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
         // .then((data) => {addTrackingData(data)})
         // setSubmitedData(initialObj)
         postTracker(newData)
-        .then((data) => {handleData(data)} )
+        .then((data) => {handleData(data)
+        console.log(data)} )
         setSubmitedData(initialObj)
         form.resetFields()
        
@@ -73,23 +85,37 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
 
     const handleData = (data)=>{
         addTrackingData(data)
-        object1= data
-        navigate("/submit-form/" + object1._id)
+        navigate("/display/" + data._id)
         
+    }
+    const handleYearChange = (value)=>{
+        console.log(value)
+        const findYear = monthsOfTheYear.filter((year) => Object.keys(year)[0] === value)
+        console.log(Object.values(findYear[0]))
+        setChoosenYear(Object.values(findYear[0])[0])
     }
 
     return (
         <Form initialValues={submitedData} form={form} onFinish={handleSubmit} onValuesChange={handleOnChange}>
-                <Form.Item name = "yearofSubmition" label = "Choose The Month">
-                    <Select>
+                <div className="formflex">
 
-                    </Select>
+                <Form.Item name = "year" className = "select" label = "Choose The Year">
+                    <Select onChange={handleYearChange} options={monthsOfTheYear.map((yearObj) =>(
+                        {
+                            label: Object.keys(yearObj)[0],
+                            value: Object.keys(yearObj)[0]
+                        }
+                    ))}/>
                 </Form.Item>
-                <Form.Item name = "monthOfSubmition" label = "Choose The Month">
-                    <Select>
-                       
-                    </Select>
+                <Form.Item name = "month" className = "select" label = "Choose The Month">
+                    <Select  options={choosenYear.map((monthString) => (
+                        {
+                            label: monthString,
+                            value: monthString
+                        }
+                    ))}/>
                 </Form.Item>
+                </div><hr></hr>
                 <div className="formflex">
                 <Form.Item label="Electric Bill" name = "electricBill" >
                     <InputNumber className = "input" value = {submitedData.electricBill} addonAfter = "£" min={0} />
@@ -114,14 +140,14 @@ const MetersForm = ({addTrackingData, monthsOfTheYear}) => {
                 </div>
                 <div className="formflex">
                 <Form.Item label="Recycle Newspaper" valuePropName="checked" name="recyclePaper"  >
-                    <Switch className="switch" value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
+                    <Switch className="switch" style = {{background: "rgb(100, 165, 108)"}} value = {submitedData.recyclePaper} checked = {submitedData.recyclePaper} checkedChildren={<CheckOutlined/>} unCheckedChildren={<CloseOutlined />}  defaultChecked = {submitedData.recyclePaper}/>
                 </Form.Item>
                 <Form.Item label="Recycle Aluminum and Tin" valuePropName="checked"  name="recycleAluminium"  >
-                    <Switch className="switch" value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />}/>
+                    <Switch className="switch" style = {{background: "rgb(100, 165, 108)"}} value = "recycleAluminium" checked = {submitedData.recycleAluminium} checkedChildren={<CheckOutlined/>}  unCheckedChildren={<CloseOutlined />} />
                 </Form.Item>
                 </div>
                 <Form.Item>
-                    <Button className = "button" type = 'primary' htmlType="submit">Submit</Button>
+                    <Button className = "button" type = 'primary' htmlType="submit" style = {{background: "rgb(100, 165, 108)"}}>Submit</Button>
                 </Form.Item>
  
         </Form>
