@@ -11,9 +11,9 @@ const NavBar = () => {
 
   return (
     <Layout className="layout">
-      <Header style={{ display: 'flex', justifyContent: 'space-between', background: "rgb(50, 94, 58)" }}>
-      <img src={logo}/>
-        <Menu theme="dark" mode="horizontal" selectedKeys={[location.pathname]} style = {{background: "rgb(50, 94, 58)"}}>
+      <Header style={{ display: 'flex', justifyContent: 'space-between', background: "rgb(75, 130, 83)" }}>
+      <img src={logo}/><h4 className='logo'>CARBONATOR</h4>
+        <Menu theme="dark" mode="horizontal" selectedKeys={[location.pathname]} style = {{background: "rgb(75, 130, 83)"}}>
           <Menu.Item key="/" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
