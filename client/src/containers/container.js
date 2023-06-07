@@ -19,7 +19,7 @@ import EmissionsGrid from "../components/EmissionsGrid";
 import Overview from "../components/Overview";
 import HomePage from "../components/HomePage";
 import AppFooter from "../components/AppFooter";
-import Resources from "../components/Resources";
+// import Resources from "../components/Resources";
 
 
 function Container() {
@@ -130,7 +130,7 @@ function Container() {
         <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection}/>}/>
         <Route path="/display/:id" element={<DisplayInfo/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
-        <Route path="/resources" element={<Resources/>}/>
+        {/* <Route path="/resources" element={<Resources/>}/> */}
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
       
