@@ -106,6 +106,7 @@ const UpdateForm = ({updateTrackingData}) => {
     return (
         
         <Form  form={form} onFinish={handleSubmit} onValuesChange={handleValuesChange}>
+        
             <Space direction="horizontal">
             <Form.Item name = 'year'>
             <Statistic   groupSeparator=""/>
