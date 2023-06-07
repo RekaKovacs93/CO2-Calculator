@@ -74,13 +74,12 @@ const Suggestions = ({carbonInfo}) => {
 
     return (
         <Space>
-            div
-            <Collapse style={{width: 400, height: 'auto', backgroundColor: 'green'}}>
+            {/* <Collapse style={{width: 500, height: 'auto', backgroundColor: "rgb(75, 130, 83)"}}>
                 <Collapse.Panel header= {<Card     title="Lower Than the  Average" bordered={false} style={{width: 300}}> <List> {lowEmissionsDisplay}</List> </Card>}>
                     <p>{lowEmissionMsg}</p>
                 </Collapse.Panel>
-            </Collapse>
-            <Collapse style={{width: 400, height: 'auto', backgroundColor: 'red'}}>
+            </Collapse> */}
+            <Collapse style={{width: 385, height: 'auto', backgroundColor: "rgb(75, 130, 83)"}}>
                 <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
                     <List>
                         {highEmissionSolutions}
