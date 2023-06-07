@@ -32,7 +32,7 @@ const EmissionsCard = ({emission, removeEmission, EmissionValues, TotalEmission,
         marginTop: 16,
         }}
         actions={
-        <EditOutlined key="edit" onClick={handleClick} />
+        [<EditOutlined key="edit" onClick={handleClick} />]
         }>
             <Link to={`/display/${id}`} style={{textDecoration: 'none'}}>
                 <h3>{emission.date.month}  {emission.date.year}</h3>
