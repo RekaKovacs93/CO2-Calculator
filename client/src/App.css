@@ -72,3 +72,17 @@ header{
   border-color: rgb(100, 165, 108)
 }
 
+.linechart{
+  margin: 0px 80px;
+
+
+}
+.linechart > h1{
+  margin: 50px 0
+}
+
+.line{
+  width: 800px
+}
+
+
