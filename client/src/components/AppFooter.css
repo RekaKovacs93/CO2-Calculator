@@ -1,0 +1,56 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgrey;
+  padding: 10px;
+  width: 100%;
+}
+
+.resource-container {
+  text-align: left;
+  margin-right: 20px;
+  padding-left: 20px;
+}
+
+.team-container {
+  text-align: right;
+  margin-bottom: 5px;
+  padding-right: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-bottom: 8px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+.team {
+  margin-left: 20px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
