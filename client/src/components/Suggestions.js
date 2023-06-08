@@ -55,12 +55,22 @@ const Suggestions = ({carbonInfo}) => {
     }
 
     const lowEmissionsDisplay  = lowEmissions.map((name, index) => <List.Item key = {index} > <CheckCircleFilled style={{color: 'green'}}/> {name} </List.Item>) 
-    const highEmissionsDisplay  = highEmissions.map((name, index) => <List.Item key = {index} > <CloseCircleFilled style={{color: 'red'}} /> {name} </List.Item>) 
+    // const highEmissionsDisplay  = highEmissions.map((name, index) => <List.Item key = {index} > <CloseCircleFilled style={{color: 'red'}} /> {name} </List.Item>) 
+    const highEmissionsDisplay  = highEmissions.map((name, index) => {
+        console.log(name)
+    return <List.Item key = {index} >
+     <Collapse style={{width: 385, height: 'auto'}}>{
+        <Collapse.Panel collapsible="header" header = {<p><CloseCircleFilled style={{color: 'red'}} /> {name}</p>}> <PlusCircleFilled style={{color: 'green'}} /> 
+     {recommendationsForEmisions[name]}
+     </Collapse.Panel> 
+     }</Collapse>
+  
+     </List.Item>}) 
 
-    const highEmissionSolutions = highEmissions.map((name, index) => <List.Item key={index}> <PlusCircleFilled style={{color: 'green'}} /> {recommendationsForEmisions[name]} </List.Item>)
-    const lowEmissionMsg = (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=2) ? congratsSentence.max : 
-        (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.aboveAVG:
-        (carbonInfo.totalEmissions <= emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.underAVG : congratsSentence.low
+    // const highEmissionSolutions = highEmissions.map((name, index) => <List.Item key={index}> <PlusCircleFilled style={{color: 'green'}} /> {recommendationsForEmisions[name]} </List.Item>)
+    // const lowEmissionMsg = (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=2) ? congratsSentence.max : 
+    //     (carbonInfo.totalEmissions > emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.aboveAVG:
+    //     (carbonInfo.totalEmissions <= emissionsUKAvg && lowEmissions.length<=7)? congratsSentence.underAVG : congratsSentence.low
 
     return (
         <Space>
@@ -69,13 +79,18 @@ const Suggestions = ({carbonInfo}) => {
                     <p>{lowEmissionMsg}</p>
                 </Collapse.Panel>
             </Collapse> */}
-            <Collapse style={{width: 385, height: 'auto', backgroundColor: "rgb(75, 130, 83)"}}>
+            {/* <Collapse style={{width: 385, height: 'auto', backgroundColor: "rgb(75, 130, 83)"}}>
                 <Collapse.Panel header= {<Card     title="Higher Than the  Average" bordered={false} style={{width: 300}}><List>{highEmissionsDisplay}</List> </Card>}>
                     <List>
                         {highEmissionSolutions}
                     </List>  
                 </Collapse.Panel>
-            </Collapse>
+            </Collapse> */}
+            <Card title="Higher Than the  Average" bordered={false} style={{width: 300}}>
+                <List>
+                    {highEmissionsDisplay}
+                </List>
+            </Card>
         
         </Space>
 

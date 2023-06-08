@@ -5,16 +5,16 @@ import { Bar } from "react-chartjs-2";
 const BarChartComp = ({carbonTrackerCollection}) => {
 
     const recommendationsForEmisions = {
-        electricBill: "Buy electric appliances with better energy efficiency and install solar panels",
-        gasBill: "Solar panels and home insulation will reduce your gas consumption",
-        oilBill: "You can replace oil with gas or other eco friendly energy source. Home insulation helps to reduce energy consumption, as well",
-        carMileage: "You can cycle for short distance and use bus or train for the long once",
-        flightUnder: "You can travel by bus or train  instead of airplain because the distance is't great.",
+      Electricity: "Buy electric appliances with better energy efficiency and install solar panels",
+      Gas: "Solar panels and home insulation will reduce your gas consumption",
+      Petrol: "You can replace oil with gas or other eco friendly energy source. Home insulation helps to reduce energy consumption, as well",
+      Car: "You can cycle for short distance and use bus or train for the long once",
+      Flights: "You can travel by bus or train  instead of airplain because the distance is't great.",
         flightOver: "For long distance travels airplain  is the best solution, but you can try avoid meanningless travels",
-        recyclePaper: "You can start recycling paper.",
+        Recycling: "You can start recycling paper or aluminiun.",
         recycleAluminium: "You can start recycling aluminiun and tin packages"
     }
-
+    console.log("data for the chart",carbonTrackerCollection)
     const data = {
 
         labels: ["Electricity", "Gas", "Petrol", "Car", "Flights", "Recycling"],
@@ -64,6 +64,7 @@ const BarChartComp = ({carbonTrackerCollection}) => {
                   if (datasetIndex === 0) {
                     // Custom label for "Your Score" dataset
                     const recommendationKey = data.labels[labelIndex];
+                    console.log(recommendationKey)
                     const recommendation = recommendationsForEmisions[recommendationKey];
                     return `Your Score: ${value} lbs\nRecommendation: ${recommendation}`;
                   } else if (datasetIndex === 1) {

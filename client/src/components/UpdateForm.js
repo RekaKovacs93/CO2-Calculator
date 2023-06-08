@@ -50,7 +50,7 @@ const UpdateForm = ({updateTrackingData}) => {
         const newCarbonData = {
             electricBill: formData.electricBill * 105,
             gasBill: formData.gasBill * 105,
-            oilBill: formData.carMileage * 113,
+            oilBill: formData.oilBill * 113,
             carMileage: formData.carMileage * 0.79,
             flightUnder: formData.flightUnder * 1100,
             flightOver: formData.flightOver * 4400,
