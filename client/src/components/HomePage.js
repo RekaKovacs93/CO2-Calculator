@@ -1,17 +1,34 @@
 import EmissionsGrid from "../components/EmissionsGrid";
 import EmissionsCard from "./EmissionsCard"
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import AppFooter from "./AppFooter";
 import earth from "../earth.svg" 
 import logo from "../Quebab.svg" 
 import logogreen from "../Quebabgreen.svg" 
 import { Button} from "antd"
+import { useState } from "react";
 
 
 
 const HomePage = ({emission, removeEmission, EmissionValues}) => {
+  const [trackingToDisplay, setTrackingToDisplay] = useState([])
+  const navigate = useNavigate()
 
-  const limitedEmissionValues = EmissionValues.slice(0, 3);
+  const compareValuesFun = (firstValue, secondValue) =>{
+    const yearFirstValue = firstValue.date.year
+    const yearSecondValue = secondValue.date.year
+    if(yearFirstValue < yearSecondValue){
+      return 1;
+    }else if (yearFirstValue > yearSecondValue){
+      return -1;
+    }
+    return 0;
+  }
+  const limitedEmissionValues = EmissionValues.sort(compareValuesFun).slice(0, 3);
+
+  const handleBtnClick = () =>{
+    navigate('/submit-form')
+  }
 
   return (
     <>
@@ -24,16 +41,15 @@ const HomePage = ({emission, removeEmission, EmissionValues}) => {
     <p>
        By raising awareness and making informed choices, we can mitigate climate change, take individual accountability, conserve the environment, improve our health, and inspire others to join us. Calculate your carbon footprint today and be a part of the journey towards a greener world!
     </p>
-    <Link to='/submit'>
-      <Button className = "button" style = {{background: "rgb(100, 165, 108)"}}>Get started</Button>
-    </Link>
+      <Button className = "button" style = {{background: "rgb(100, 165, 108)"}} onClick={handleBtnClick}>Get started</Button>
+    
     </div>
     
     
     <div>
     <h2 className="recents">Most Recent</h2>
     <EmissionsGrid EmissionValues={limitedEmissionValues}/> 
-    <EmissionsCard EmissionValues={EmissionValues} emission={emission} removeEmission={removeEmission}/>
+    {/* <EmissionsCard EmissionValues={EmissionValues} emission={emission} removeEmission={removeEmission}/> */}
     </div>
     {/* <Link to='/overview'>
       <button>See more information</button>

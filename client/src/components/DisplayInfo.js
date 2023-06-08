@@ -6,7 +6,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 import { getOneTracker } from "../service/TrackerSevice"
 import { useEffect, useState } from "react"
 import { Avatar, Card, Skeleton, Switch } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { EditOutlined, CheckOutlined, CloseOutlined, CheckCircleTwoTone, CloseSquareTwoTone } from '@ant-design/icons';
 
 
 const DisplayInfo = () =>{
@@ -55,6 +55,7 @@ const DisplayInfo = () =>{
   }]
 
 
+
     return(
         <>
             <h1>Your monthly CO2 Footprint</h1>
@@ -81,8 +82,8 @@ const DisplayInfo = () =>{
             <p><b>Car:</b> {carbonInfo.entries.carMileage}</p>
             <p><b>Flight Under 4 Hours:</b> {carbonInfo.entries.flightUnder}</p>  
             <p><b>Flight Over 4 Hours:</b> {carbonInfo.entries.flightOver}</p>  
-            <p><b>Recycle Paper:</b> {carbonInfo.entries.recyclePaper}</p>  
-            <p><b>Recycle Aluminium:</b> {(carbonInfo.entries.recycleAluminium)? true : false}</p>
+            <p><b>Recycle Paper:</b> {(carbonInfo.entries.recyclePaper)? "Yes": "No"}</p>  
+            <p><b>Recycle Aluminium:</b> {(carbonInfo.entries.recycleAluminium)? "Yes": "No"}</p>
             </div>
             {/* <hr></hr>
             <h3>Total emissions:</h3><h1>{carbonInfo.totalEmissions}</h1> */}

@@ -31,10 +31,8 @@ function Container() {
 
   const updateMonthsAndYears = (date) =>{
     const copyOfMonths =[...monthsOfTheYear]
-    console.log("the copy of the year", monthsOfTheYear)
-    const yearkeys = copyOfMonths.map((year) => Object.keys(year)[0])
+    const yearkeys = monthsOfTheYear.map((year) => Object.keys(year)[0])
     const yearIndex = yearkeys.indexOf(date.year)
-    console.log("date data", date, "index of the year", yearIndex)
     const monthIndex = copyOfMonths[yearIndex][date.year].indexOf(date.month)
     if (monthIndex >-1){
       const spliceListOfMonths =  [... copyOfMonths[yearIndex][date.year]]
@@ -44,34 +42,31 @@ function Container() {
     setMonthsOfTheYear(copyOfMonths)
   }
   useEffect (() => {
-    getMonthsAndYears()
     getDBSeeds()
   }, [])
-  const getMonthsAndYears = (data = 1) =>{
-    console.log("helooooo")
-    if (!data===1){
-      console.log("helooooo")
-      const mapDBDates = data.map((element) => element.date)
-      console.log("date of the dB",mapDBDates)
-      mapDBDates.forEach((element) => {
-        updateMonthsAndYears(element)
-      });
-    }else{
+  const getMonthsAndYears = () =>{
+
       const allMonthsAndYears = years.map((year) => {
         const yearObj = {}
         yearObj[year] = months
         return yearObj
       })
       setMonthsOfTheYear(allMonthsAndYears)
-      console.log("monthOfTheYear", monthsOfTheYear)
-    }
+      console.log(monthsOfTheYear)
    
   }
+  const getMonthsAndYearsFromFetch = (data) => {
+    const mapDBDates = data.map((element) => element.date)
+    mapDBDates.forEach((element) => {
+      // updateMonthsAndYears(element)
+    })
+  }
   const getDBSeeds = ()=> {
+    getMonthsAndYears()
     getTracker()
     .then(data => {
       setCarbonTrackerCollection(data)
-      getMonthsAndYears(data)
+      getMonthsAndYearsFromFetch(data)
     })
   }
 
@@ -92,7 +87,7 @@ function Container() {
         <Route path="/" element={<HomePage EmissionValues={carbonTrackerCollection }/>}/>
         <Route path="/submit-form" element ={<MetersForm addTrackingData = {addTrackingData} monthsOfTheYear={monthsOfTheYear}/>}/>
         <Route path="/submit-form/:id" element={<SuccessfulSubmition/>}/>
-        <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection} />}/>
+        <Route path="/overview" element={<Overview carbonTrackerCollection = {carbonTrackerCollection} EmissionValues={carbonTrackerCollection} years={years}/>}/>
         <Route path="/display/:id" element={<DisplayInfo EmissionValues={carbonTrackerCollection }/>}/>
         <Route path="/update/:id" element={<UpdateForm updateTrackingData={updateTrackingData}/>}/>
         {/* <Route path="/resources" element={<Resources/>}/> */}
